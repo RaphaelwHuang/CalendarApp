@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :schedules
   resources :administrates
   resources :comprises
   resources :groups
-  resources :users
   resources :events
   resources :calendars
   root 'users#index'
