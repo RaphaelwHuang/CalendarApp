@@ -8,5 +8,12 @@
 * Documentation:
 
 ### Contributions
-Please list who did what for each part of the project.
-Also list if people worked together (pair programmed) on a particular section.
+
+##### Sunny Patel
+* Implemented whole schema
+* Installed devise
+* Implemented all things related to devise (routes, controllers, model, views)
+
+
+
+
