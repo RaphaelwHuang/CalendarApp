@@ -1,31 +1,20 @@
 Rails.application.routes.draw do
-  get 'static_pages/help'
-
-  devise_for :users,
-  path: '',
-  path_names: {
-    sign_in: 'login',
-    sign_out: 'logout'
-  }
+  root 'static_pages#home'
+  devise_for :users, controllers: {
+    sessions: 'users/sessions', registrations: 'users/registrations'
+    },
+    path: '',
+    path_names: {
+      sign_in: 'login',
+      sign_out: 'logout',
+      sign_up: 'register'
+    }
   resources :schedules
   resources :administrates
   resources :comprises
   resources :groups
   resources :events
   resources :calendars
-
-  authenticated :user do
-     root to: 'personal#index', as: :authenticated_root
-   end
-
-   root to: 'static_pages#home'
-
-
-  # root 'static_pages#home'
-  # def after_sign_in_path_for(resource)
-  #   stored_location_for(resource) || welcome_path
-  # end
-
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

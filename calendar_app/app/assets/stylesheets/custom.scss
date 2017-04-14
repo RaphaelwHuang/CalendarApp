@@ -39,7 +39,7 @@ h1 {
   letter-spacing: -2px;
   margin-bottom: 30px;
   text-align: center;
-  // background-color: $gray-medium-light;
+  background-color: $gray-medium-light;
 }
 
 
@@ -56,16 +56,13 @@ p {
   font-size: 1.1em;
   line-height: 1.7em;
 }
-/* Buttons */
-
-
 /* footer */
 
 footer {
   margin-top: 45px;
   padding-top: 5px;
   border-top: 1px solid #eaeaea;
-
+  color: #777;
 }
 
 footer a {
@@ -73,8 +70,7 @@ footer a {
 }
 
 footer a:hover {
-  text-decoration: underline;
-  color: none;
+  color: #222;
 }
 
 footer small {
