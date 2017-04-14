@@ -2,7 +2,18 @@
 <h1>
 	Welcome
 	<%= "#{current_user.fname}!" if user_signed_in? %>
+
 </h1>
+<%= render './partials/addEvent' %>
+<br>
+<%= render './partials/viewEvents' %>
+
+
+
+
+
+
+
 <%else %>
 <h1>CalanderAppNameHere</h1>
 <h2> Maybe a logo? </h2>
