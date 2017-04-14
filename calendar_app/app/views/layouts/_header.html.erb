@@ -1,15 +1,40 @@
+
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
     <nav>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Home",  root_path %></li>
-        <li><%= link_to "Help",   '#' %></li>
+        <!-- IF USER IS SIGNED IN -->
         <% if user_signed_in? %>
-          <li><%= link_to "Log out", destroy_user_session_path %></li>
+        <!-- Home page should be user's personal calendar -->
+        <li><%= link_to "Home",  root_path %></li>
+
+        <!-- Downdown for Group -->
+        <li class = "drowndown">
+          <a class="dropdown-toggle" data-toggle="dropdown" >
+            Groups <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><%= link_to "View Groups",  groups_path %></li>
+            <li><%= link_to "Create Group",  new_group_path %></li>
+            <li><%= link_to "Join New",  '#' %></li>
+          </ul>
+        </li>
+
+        <li><%= link_to "Profile", '#' %></li>
+        <li><%= link_to "Log out", destroy_user_session_path %></li>
         <% else %>
-          <li><%= link_to "Log in", new_user_session_path %></li>
+        <li><%= link_to "Log in", new_user_session_path %></li>
         <% end %>
+        <li><%= link_to "Help",   static_pages_help_path %></li>
+
+
+
       </ul>
     </nav>
   </div>
+  <script>
+  $(document).ready(function(){
+    $(".dropdown-toggle").dropdown();
+  });
+  </script>
 </header>
