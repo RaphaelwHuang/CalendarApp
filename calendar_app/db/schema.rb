@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170412205927) do
+ActiveRecord::Schema.define(version: 20170414214647) do
 
   create_table "administrates", force: :cascade do |t|
     t.integer  "group_id"
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 20170412205927) do
     t.time     "start_time"
     t.time     "end_time"
     t.string   "start_day"
-    t.time     "end_day"
+    t.string   "end_day"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

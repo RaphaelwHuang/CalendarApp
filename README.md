@@ -11,9 +11,13 @@
 
 ##### Sunny Patel
 * Implemented whole schema
+* General schema modifications
 * Installed devise
 * Implemented all things related to devise (routes, controllers, model, views)
-
+* Collapsible add_event form for the add_event button
+* General header modifications
+* General routing modifications
+* General bug fixing
 
 
 
