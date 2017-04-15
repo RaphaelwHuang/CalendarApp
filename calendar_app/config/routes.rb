@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     root to: 'personal#index', as: :authenticated_root
   end
 
+
   root to: 'static_pages#home'
   get '/help', to: 'static_pages#help'
 
