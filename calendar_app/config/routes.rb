@@ -1,16 +1,20 @@
 Rails.application.routes.draw do
-  root 'static_pages#home'
+  authenticated :user do
+    root to: 'personal#index', as: :authenticated_root
+  end
+
+  root to: 'static_pages#home'
   get '/help', to: 'static_pages#help'
 
   devise_for :users, controllers: {
     sessions: 'users/sessions', registrations: 'users/registrations'
-    },
-    path: '',
-    path_names: {
-      sign_in: 'login',
-      sign_out: 'logout',
-      sign_up: 'register'
-    }
+  },
+  path: '',
+  path_names: {
+    sign_in: 'login',
+    sign_out: 'logout',
+    sign_up: 'register'
+  }
   resources :schedules
   resources :administrates
   resources :comprises

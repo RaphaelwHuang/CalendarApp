@@ -1,24 +1,7 @@
-<% if user_signed_in? %>
-	<h1>
-		Welcome
-		<%= "#{current_user.fname}!" if user_signed_in? %>
 
-	</h1>
-	<%= render './partials/addEvent' %>
-	<br>
-	<%= render './partials/viewEvents' %>
-
-
-
-
-
-
-
-<%else %>
 	<h1>CalanderAppNameHere</h1>
 	<h2> Maybe a logo? </h2>
 	<div class = "center">
 	<%= button_to "Sign Up", new_user_registration_path, class: "btn-lg", method: :get %>
 	<%= button_to "Login", new_user_session_path, class: "btn-lg" %>
 	</div>
-	<%end %>

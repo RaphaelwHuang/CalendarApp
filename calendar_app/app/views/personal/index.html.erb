@@ -1,2 +1,10 @@
-<h1> User is now logged in </h1>
-<h2> All personal info displayed here </h2>
+<h1>
+  Welcome
+  <%= "#{current_user.fname}!" if user_signed_in? %>
+
+</h1>
+<%= render './partials/addEvent' %>
+<br>
+<%= render './partials/viewEvents' %>
+<br>
+<%= render './partials/joinGroup' %>

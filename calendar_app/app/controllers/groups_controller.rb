@@ -10,6 +10,7 @@ class GroupsController < ApplicationController
   # GET /groups/1
   # GET /groups/1.json
   def show
+    
   end
 
   # GET /groups/new
@@ -30,10 +31,12 @@ class GroupsController < ApplicationController
       if @group.save
         format.html { redirect_to @group, notice: 'Group was successfully created.' }
         format.json { render :show, status: :created, location: @group }
+
       else
         format.html { render :new }
         format.json { render json: @group.errors, status: :unprocessable_entity }
       end
+
     end
   end
 
