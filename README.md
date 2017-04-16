@@ -26,3 +26,12 @@
 * Created partials for adding event, creating/joining group
 * Login/Sign up buttons on home page
 * navigation bar and footer
+
+
+##### Kenton Steiner
+* General schema modifications
+* Styling and editing for the pages in views for groups, users
+* Editing the navigation bar in the header
+* Modified controller methods for groups
+* General routing modifications
+* Set devise settings
