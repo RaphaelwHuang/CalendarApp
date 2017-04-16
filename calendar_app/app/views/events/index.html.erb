@@ -3,8 +3,8 @@
 <h1>List of Event</h1>
 <h2><%= find_day %></h2>
 
-<table>
-  <thead>
+<table class = "table table-striped">
+  <thead class="thead-inverse">
     <tr>
       <th>Name</th>
       <th>Start time</th>
@@ -36,4 +36,5 @@
 
 <br>
 
-<%= link_to 'New Event', new_event_path %>
+<!-- <button> <%= link_to 'New Event', new_event_path %> </button> -->
+<%= render './partials/addEvent' %>

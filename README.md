@@ -20,4 +20,9 @@
 * General bug fixing
 
 
-
+##### Jenn Alarcon
+* Installed bootstrap, and added basic styling
+* Made modifications to routes, controllers, and views
+* Created partials for adding event, creating/joining group
+* Login/Sign up buttons on home page
+* navigation bar and footer
