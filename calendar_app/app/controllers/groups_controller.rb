@@ -26,6 +26,8 @@ class GroupsController < ApplicationController
   # POST /groups.json
   def create
     @group = Group.new(group_params)
+    @group.users << current_user
+    current_user.update_attribute :admin, true
 
     respond_to do |format|
       if @group.save
