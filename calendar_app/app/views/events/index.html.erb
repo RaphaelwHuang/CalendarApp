@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Events</h1>
+<h1>List of Event</h1>
+<h2><%= find_day %></h2>
 
 <table>
   <thead>
@@ -18,13 +19,16 @@
     <% @events.each do |event| %>
       <tr>
         <td><%= event.name %></td>
-        <td><%= event.start_time %></td>
-        <td><%= event.end_time %></td>
+        <td><%= event.start_time.hour.to_s + ":" + event.start_time.min.to_s %></td>
+        <td><%= event.end_time.hour.to_s + ":" + event.end_time.min.to_s %></td>
         <td><%= event.start_day %></td>
         <td><%= event.end_day %></td>
-        <td><%= link_to 'Show', event %></td>
-        <td><%= link_to 'Edit', edit_event_path(event) %></td>
-        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+        <td>
+          <%= link_to 'Show', event %>
+          <%= link_to 'Edit', edit_event_path(event) %>
+          <%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
       </tr>
     <% end %>
   </tbody>

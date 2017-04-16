@@ -1,4 +1,5 @@
 <p id="notice"><%= notice %></p>
+<h1>Details of Events</h1>
 
 <p>
   <strong>Name:</strong>
@@ -7,12 +8,12 @@
 
 <p>
   <strong>Start time:</strong>
-  <%= @event.start_time %>
+  <%= @event.start_time.hour.to_s + ":" + @event.start_time.min.to_s  %>
 </p>
 
 <p>
   <strong>End time:</strong>
-  <%= @event.end_time %>
+  <%= @event.end_time.hour.to_s + ":" + @event.end_time.min.to_s %>
 </p>
 
 <p>
