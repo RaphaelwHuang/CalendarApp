@@ -7,7 +7,6 @@
       <th>#</th>
       <th>Name(link to calendar on name?)</th>
       <th>Number of Users</th>
-      <th>Group Admin</th>
       <th colspan="3">Group options</th>
     </tr>
   </thead>
@@ -20,11 +19,6 @@
         <td><%= group.id %></td>
         <td><%= group.name %></td>
         <td><%= group.users.distinct.count %></td>
-        <td><%= current_user.admin %></td>
-        <td><%= link_to 'Show', group %></td>
-        <td><%= link_to 'Edit', edit_group_path(group) %></td>
-        <% if current_user.admin %>
-        <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
       </tr>
         <% end %> <!--END OF IF-->

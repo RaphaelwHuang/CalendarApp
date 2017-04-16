@@ -25,10 +25,11 @@ class ComprisesController < ApplicationController
   # POST /comprises.json
   def create
     @comprise = Comprise.new(comprise_params)
+    @group = Group.find(@comprise.group_id)
 
     respond_to do |format|
       if @comprise.save
-        format.html { redirect_to @comprise, notice: 'Comprise was successfully created.' }
+        format.html { redirect_to @group, notice: 'User successfully added to Group!' }
         format.json { render :show, status: :created, location: @comprise }
       else
         format.html { render :new }
@@ -36,6 +37,7 @@ class ComprisesController < ApplicationController
       end
     end
   end
+
 
   # PATCH/PUT /comprises/1
   # PATCH/PUT /comprises/1.json
