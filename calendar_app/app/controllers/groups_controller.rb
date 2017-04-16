@@ -13,10 +13,6 @@ class GroupsController < ApplicationController
 
   end
 
-  def viewAll
-
-  end
-
   # GET /groups/new
   def new
     @group = Group.new
