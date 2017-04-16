@@ -3,8 +3,12 @@
   <%= "#{current_user.fname}!" if user_signed_in? %>
 
 </h1>
+
+<h3> Events </h3>
 <%= render './partials/addEvent' %>
 <br>
 <%= render './partials/viewEvents' %>
+
+<h3> Groups </h3>
 <br>
 <%= render './partials/joinGroup' %>
