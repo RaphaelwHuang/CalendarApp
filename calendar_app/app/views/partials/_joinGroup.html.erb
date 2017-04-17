@@ -1,3 +1,7 @@
 <div class = joinGroup>
-  <button> <%= link_to "Join New Group",new_comprise_path %></button>
+  <button data-toggle="collapse" data-target="#groupFormCollapse">Join New Group</button>
+  <div id="groupFormCollapse" class="collapse">
+  <br>
+  <%= render partial:'comprises/form', locals: {comprise: Comprise.new} %>
+  </div>
 </div>
