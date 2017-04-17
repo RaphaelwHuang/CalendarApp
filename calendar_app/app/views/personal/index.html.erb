@@ -1,14 +1,127 @@
-<h1>
-  Welcome
-  <%= "#{current_user.fname}!" if user_signed_in? %>
+<div class="personal">
+  <h1>
+    Welcome
+    <%= "#{current_user.fname}!" if user_signed_in? %>
+  </h1>
 
-</h1>
+  <div class ="left">
+    <h3> Events </h3>
+    <%= render './partials/addEvent' %>
+    <br>
+    <%= render './partials/viewEvents' %>
 
-<h3> Events </h3>
-<%= render './partials/addEvent' %>
-<br>
-<%= render './partials/viewEvents' %>
+    <h3> Groups </h3>
+    <br>
+    <%= render './partials/joinGroup' %>
+  </div>
+  <div class="right">
+    <div class="month">
+      <ul>
+        <li>
+          <%= find_week %>
+          <div id="day"><%= find_day %></div>
+        </li>
+      </ul>
+    </div>
 
-<h3> Groups </h3>
-<br>
-<%= render './partials/joinGroup' %>
+    <ul class="weekdays">
+      <li>All Day</li>
+      <li>Sun</li>
+      <li>Mon</li>
+      <li>Tue</li>
+      <li>Wed</li>
+      <li>Thu</li>
+      <li>Fri</li>
+      <li>Sat</li>
+    </ul>
+
+    <% @events.each do |event| %>
+        <ul class="events">
+          <li>
+            <%= event.start_time.hour.to_s + ":" + event.start_time.min.to_s %>
+            -
+            <%= event.end_time.hour.to_s + ":" + event.end_time.min.to_s %>
+          </li>
+
+          <li id="name">
+            <% if event.start_day.to_s.downcase == "sunday" %>
+                <%= event.name =%>
+            <% end %>
+            <% if event.start_day.to_s.downcase != event.end_day.to_s.downcase %>
+                <% if event.end_day.to_s.downcase == "sunday" %>
+                    <%= event.name =%>
+                <% end %>
+            <% end %>
+          </li>
+
+          <li id="name">
+            <% if event.start_day.to_s.downcase == "monday" %>
+                <%= event.name =%>
+            <% end %>
+            <% if event.start_day.to_s.downcase != event.end_day.to_s.downcase %>
+                <% if event.end_day.to_s.downcase == "monday" %>
+                    <%= event.name =%>
+                <% end %>
+            <% end %>
+          </li>
+
+          <li id="name">
+            <% if event.start_day.to_s.downcase == "tuesday" %>
+                <%= event.name =%>
+            <% end %>
+            <% if event.start_day.to_s.downcase != event.end_day.to_s.downcase %>
+                <% if event.end_day.to_s.downcase == "tuesday" %>
+                    <%= event.name =%>
+                <% end %>
+            <% end %>
+          </li>
+
+          <li id="name">
+            <% if event.start_day.to_s.downcase == "wednesday" %>
+                <%= event.name =%>
+            <% end %>
+            <% if event.start_day.to_s.downcase != event.end_day.to_s.downcase %>
+                <% if event.end_day.to_s.downcase == "wednesday" %>
+                    <%= event.name =%>
+                <% end %>
+            <% end %>
+          </li>
+
+          <li id="name">
+            <% if event.start_day.to_s.downcase == "thursday" %>
+                <%= event.name =%>
+            <% end %>
+            <% if event.start_day.to_s.downcase != event.end_day.to_s.downcase %>
+                <% if event.end_day.to_s.downcase == "thursday" %>
+                    <%= event.name =%>
+                <% end %>
+            <% end %>
+          </li>
+
+          <li id="name">
+            <% if event.start_day.to_s.downcase == "friday" %>
+                <%= event.name =%>
+            <% end %>
+            <% if event.start_day.to_s.downcase != event.end_day.to_s.downcase %>
+                <% if event.end_day.to_s.downcase == "friday" %>
+                    <%= event.name =%>
+                <% end %>
+            <% end %>
+          </li>
+
+          <li id="name">
+            <% if event.start_day.to_s.downcase == "saturday" %>
+                <%= event.name =%>
+            <% end %>
+            <% if event.start_day.to_s.downcase != event.end_day.to_s.downcase %>
+                <% if event.end_day.to_s.downcase == "saturday" %>
+                    <%= event.name =%>
+                <% end %>
+            <% end %>
+          </li>
+
+        </ul>
+    <% end %>
+
+  </div>
+</div>

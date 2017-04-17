@@ -1,2 +1,3 @@
-class PersonalController < ApplicationController
+class PersonalController < EventsController
+  @events = Event.all
 end
