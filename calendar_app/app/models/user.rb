@@ -8,5 +8,4 @@ class User < ActiveRecord::Base
   has_many :administrates
   has_many :groups, through: :comprises
   has_many :lead_groups, through: :administrates, source: :groups
-
 end

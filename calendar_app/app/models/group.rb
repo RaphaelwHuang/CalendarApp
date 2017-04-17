@@ -3,6 +3,6 @@ class Group < ActiveRecord::Base
   has_many :comprises
   has_many :users, through: :comprises
   has_many :administrates
-  has_many :admin, through: :administrates, source: :users
-  attr_accessor :user, :admin
+  has_many :admins, through: :administrates, source: :user
+  # attr_accessor :user, :admin
 end
