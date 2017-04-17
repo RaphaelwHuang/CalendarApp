@@ -15,6 +15,8 @@ class ComprisesController < ApplicationController
   # GET /comprises/new
   def new
     @comprise = Comprise.new
+    # So you don't have to enter your own user_id when joining
+    @comprise.user_id = current_user.id
   end
 
   # GET /comprises/1/edit

@@ -25,6 +25,7 @@ class AdministratesController < ApplicationController
   # POST /administrates.json
   def create
     @administrate = Administrate.new(administrate_params)
+    @group = Group.find(@administrate.group_id)
 
     respond_to do |format|
       if @administrate.save

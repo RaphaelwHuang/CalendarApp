@@ -23,16 +23,6 @@ ActiveRecord::Schema.define(version: 20170414214647) do
   add_index "administrates", ["group_id"], name: "index_administrates_on_group_id"
   add_index "administrates", ["user_id"], name: "index_administrates_on_user_id"
 
-  create_table "appointments", force: :cascade do |t|
-    t.integer  "group_id"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "appointments", ["group_id"], name: "index_appointments_on_group_id"
-  add_index "appointments", ["user_id"], name: "index_appointments_on_user_id"
-
   create_table "calendars", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -88,11 +78,6 @@ ActiveRecord::Schema.define(version: 20170414214647) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.string   "confirmation_token"
-    t.datetime "confirmation_sent_at"
-    t.integer  "failed_attempts",        default: 0,  null: false
-    t.string   "unlock_token"
-    t.datetime "locked_at"
     t.string   "fname"
     t.string   "lname"
     t.integer  "calendar_id"

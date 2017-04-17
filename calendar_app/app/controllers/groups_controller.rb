@@ -27,7 +27,7 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     @group.users << current_user
-    current_user.update_attribute :admin, true
+    @group.admins << current_user
 
     respond_to do |format|
       if @group.save
