@@ -1,5 +1,5 @@
 <div class = addEvent>
-  <button data-toggle="collapse" data-target="#eventForm">New event</button>
+  <button data-toggle="collapse" data-target="#eventForm" class="btn-md">New event</button>
   <div id="eventForm" class="collapse">
     <br>
   	<%= render partial:'events/form', locals: {event: Event.new} %>

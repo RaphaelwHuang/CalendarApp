@@ -86,3 +86,7 @@ footer ul li button {
   float: left;
   margin-left: 15px;
 }
+
+button {
+  @extend .btn, .btn-primary;
+}
