@@ -38,9 +38,9 @@
     <% @events.each do |event| %>
         <ul class="events">
           <li>
-            <%= event.start_time.hour.to_s + ":" + event.start_time.min.to_s %>
+            <%= event.start_time.strftime("%H:%M").to_s %>
             -
-            <%= event.end_time.hour.to_s + ":" + event.end_time.min.to_s %>
+            <%= event.end_time.strftime("%H:%M").to_s %>
           </li>
 
           <li id="name">
