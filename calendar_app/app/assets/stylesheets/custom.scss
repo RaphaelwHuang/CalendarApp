@@ -1,3 +1,7 @@
+/* 
+Author: JA
+Changes: SP - button extends bootstrap button  
+*/
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
@@ -89,4 +93,14 @@ footer ul li button {
 
 button {
   @extend .btn, .btn-primary;
+  font-color: #fff;
+}
+/* Allows for links to look just like buttons */
+a.button {
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+
+  text-decoration: none;
+  @extend button;
 }

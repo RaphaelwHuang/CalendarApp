@@ -1,0 +1,46 @@
+<%#
+Authored by: RH
+Changes: 
+  SP - Completely refractored code. Created this partial file.
+%>
+<%# Header portion of calendar %>
+<div class="month">
+  <ul>
+    <li>
+      <%= find_week %>
+      <div id="day"><%= find_day %></div>
+    </li>
+  </ul>
+</div>
+
+<ul class="weekdays">
+  <% %w(Time Mon Tue Wed Thu Fri Sat Sun).each do |header_info|%>
+    <li><%= header_info %></li>
+  <% end %>
+</ul>
+
+<%# Content of calendar %>
+<% @events.each do |event| %>
+<ul class="events list-group">
+  <%# Consider adding a class %>
+  <li>
+    <%= event.start_time.strftime("%H:%M").to_s %>
+    -
+    <%= event.end_time.strftime("%H:%M").to_s %>
+  </li>
+
+  <% %w(monday tuesday wednesday thursday friday saturday sunday).each do |weekday| %>
+  <li class="name">
+    <% if event.start_day.to_s.downcase == weekday %>
+    <%= event.name =%>
+    <% end %>
+    <% if event.start_day.to_s.downcase != event.end_day.to_s.downcase %>
+    <% if event.end_day.to_s.downcase == weekday %>
+    <%= event.name =%>
+    <% end %>
+    <% end %>
+  </li>
+  <% end %>
+
+</ul>
+<% end %>
