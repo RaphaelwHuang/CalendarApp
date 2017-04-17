@@ -19,10 +19,10 @@
     <% @events.each do |event| %>
       <tr>
         <td><%= event.name %></td>
-        <td><%= event.start_time.hour.to_s + ":" + event.start_time.min.to_s %></td>
-        <td><%= event.end_time.hour.to_s + ":" + event.end_time.min.to_s %></td>
-        <td><%= event.start_day %></td>
-        <td><%= event.end_day %></td>
+        <td><%= event.start_time.strftime("%H:%M").to_s %></td>
+        <td><%= event.end_time.strftime("%H:%M").to_s %></td>
+        <td><%= event.start_day.to_s.titleize %></td>
+        <td><%= event.end_day.to_s.titleize %></td>
 
         <td>
           <%= link_to 'Show', event %>

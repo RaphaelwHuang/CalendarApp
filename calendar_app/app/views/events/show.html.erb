@@ -8,22 +8,22 @@
 
 <p>
   <strong>Start time:</strong>
-  <%= @event.start_time.hour.to_s + ":" + @event.start_time.min.to_s  %>
+  <%= @event.start_time.strftime("%H:%M").to_s  %>
 </p>
 
 <p>
   <strong>End time:</strong>
-  <%= @event.end_time.hour.to_s + ":" + @event.end_time.min.to_s %>
+  <%= @event.end_time.strftime("%H:%M").to_s  %>
 </p>
 
 <p>
   <strong>Start day:</strong>
-  <%= @event.start_day %>
+  <%= @event.start_day.to_s.titleize %>
 </p>
 
 <p>
   <strong>End day:</strong>
-  <%= @event.end_day %>
+  <%= @event.end_day.to_s.titleize %>
 </p>
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
