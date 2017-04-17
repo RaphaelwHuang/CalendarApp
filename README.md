@@ -32,9 +32,10 @@
 * General schema modifications
 * Styling and editing for the pages in views for groups, users
 * Editing the navigation bar in the header
-* Modified controller methods for groups
+* Modified controller methods for groups, comprises
 * General routing modifications
 * Set devise settings
+* Created Static pages about and contact
 
 ##### Raphael Huang
 * Added basic styling for events, calendar
