@@ -1,8 +1,9 @@
 <%#
 Authored by: RH
 Changes: 
-  SP - Completely refractored code. Created this partial file.
-  %>
+  SP - Completely refactored code. Created this partial file.
+  RH - Minor change the syntax
+%>
 
   <%# Header portion of calendar %>
   <div class="calendar">
@@ -46,11 +47,11 @@ Changes:
             <% %w(monday tuesday wednesday thursday friday saturday sunday).each do |weekday| %>
             <td>
               <% if event.start_day.to_s.downcase == weekday %>
-              <%= event.name =%>
+              <%= event.name %>
               <% end %>
               <% if event.start_day.to_s.downcase != event.end_day.to_s.downcase %>
               <% if event.end_day.to_s.downcase == weekday %>
-              <%= event.name =%>
+              <%= event.name %>
               <% end %>
               <% end %>
             </td>

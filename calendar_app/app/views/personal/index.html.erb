@@ -1,6 +1,7 @@
 <%#
 Author: JA
 Changes:
+  RH - Added the calendar, minor change the syntax
   SP - Created partials + added collapsible forms for addEvent and joinGroup
 %>
 <div class="personal">
@@ -22,7 +23,7 @@ Changes:
   <div class="right">
 
 
-   <%= render './partials/generateCalendar', object: @event %>
+   <%= render './partials/generateCalendar', object: @events %>
 
   </div>
 </div>
