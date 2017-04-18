@@ -2,45 +2,62 @@
 Authored by: RH
 Changes: 
   SP - Completely refractored code. Created this partial file.
-%>
-<%# Header portion of calendar %>
-<div class="month">
-  <ul>
-    <li>
-      <%= find_week %>
-      <div id="day"><%= find_day %></div>
-    </li>
-  </ul>
-</div>
+  %>
 
-<ul class="weekdays">
-  <% %w(Time Mon Tue Wed Thu Fri Sat Sun).each do |header_info|%>
-    <li><%= header_info %></li>
-  <% end %>
-</ul>
+  <%# Header portion of calendar %>
+  <div class="calendar">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12">
+        <p class="text-center">
+          <%= find_week %>
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12">
+        <p class="text-center">
+          <%= find_day %>  
+        </p>
+      </div>
+    </div>
 
-<%# Content of calendar %>
-<% @events.each do |event| %>
-<ul class="events list-group">
-  <%# Consider adding a class %>
-  <li>
-    <%= event.start_time.strftime("%H:%M").to_s %>
-    -
-    <%= event.end_time.strftime("%H:%M").to_s %>
-  </li>
+    <div class="row">
+      <table class="table table-hover">
 
-  <% %w(monday tuesday wednesday thursday friday saturday sunday).each do |weekday| %>
-  <li class="name">
-    <% if event.start_day.to_s.downcase == weekday %>
-    <%= event.name =%>
-    <% end %>
-    <% if event.start_day.to_s.downcase != event.end_day.to_s.downcase %>
-    <% if event.end_day.to_s.downcase == weekday %>
-    <%= event.name =%>
-    <% end %>
-    <% end %>
-  </li>
-  <% end %>
+        <thead>
+          <tr>
+            <% %w(Time Mon Tue Wed Thu Fri Sat Sun).each do |header_info|%>
+            <th><%= header_info %></th>
+            <% end %>
 
-</ul>
-<% end %>
+          </tr>
+        </thead>
+
+        <%# Content of calendar. Iterates through all events  %>
+        <tbody>
+          <% @events.each do |event| %>
+          <tr>
+            <th scope="row">
+              <%= event.start_time.strftime("%H:%M").to_s %>
+              -
+              <%= event.end_time.strftime("%H:%M").to_s %>
+            </th>
+            <%# iterate through all the weeds to see where the event falls %>
+            <% %w(monday tuesday wednesday thursday friday saturday sunday).each do |weekday| %>
+            <td>
+              <% if event.start_day.to_s.downcase == weekday %>
+              <%= event.name =%>
+              <% end %>
+              <% if event.start_day.to_s.downcase != event.end_day.to_s.downcase %>
+              <% if event.end_day.to_s.downcase == weekday %>
+              <%= event.name =%>
+              <% end %>
+              <% end %>
+            </td>
+            <% end %>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
