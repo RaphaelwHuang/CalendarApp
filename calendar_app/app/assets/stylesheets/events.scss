@@ -1,9 +1,15 @@
 // Place all the styles related to the events controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$breeze: rgba(67, 132, 150, 0.5);
+$breeze-hex: #438496;
+$sky-blue: #caebf2;
+
+
 table {
   border-collapse: collapse;
   width: 100%;
+  font-family: inherit !important;
 }
 
 th, td {
@@ -14,7 +20,7 @@ th, td {
 tr:nth-child(even){background-color: #f2f2f2}
 
 th {
-  background-color: lightgray;
-  color: darkblue;
+  background-color: $breeze;
+  color: white;
+  font-weight: 550;
 }
-

@@ -1,13 +1,14 @@
-/* 
+/*
 Author: JA
-Changes: SP - button extends bootstrap button  
+Changes: SP - button extends bootstrap button
 */
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
 /* mixins, variables, etc. */
 
-$gray-medium-light: #eaeaea;
+$sky-blue: #caebf2;
+$breeze: rgba(67, 132, 150, 0.95);
 
 /* universal */
 
@@ -91,11 +92,16 @@ footer ul li button {
   float: left;
   margin-left: 15px;
 }
-
-button {
-  @extend .btn, .btn-primary;
-  font-color: #fff;
+button a{
+  color: black !important;
+  background-color: $sky-blue !important;
 }
+button {
+  @extend .btn;
+  font-color: black;
+  background-color: $sky-blue;
+}
+
 /* Allows for links to look just like buttons */
 a.button {
   -webkit-appearance: button;
