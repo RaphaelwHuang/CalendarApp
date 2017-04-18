@@ -19,6 +19,7 @@
               <td><%= group.id %></td>
               <td><%= group.name %></td>
               <td><%= group.users.distinct.count %></td>
+              <td><button><%= link_to "Show", group %></button></td>
             </tr>
     
       <% end %> <!--END OF IF-->
