@@ -19,7 +19,7 @@
               <td><%= group.id %></td>
               <td><%= group.name %></td>
               <td><%= group.users.distinct.count %></td>
-              <td><button><%= link_to "Show", group %></button></td>
+              <td><%= button_to "Show", group, method: "get", class: "button" %></td>
             </tr>
     
       <% end %> <!--END OF IF-->
@@ -29,4 +29,4 @@
 </table>
 
 <br>
-<button><%= link_to 'Create New Group', new_group_path %></button>
+<%= button_to 'Create New Group', new_group_path, method: "get", class: "button" %>

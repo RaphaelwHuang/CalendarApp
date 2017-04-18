@@ -1,8 +1,10 @@
-=begin
-Author: SP
-Changes:
-  SP - Added admin support
-=end
+
+# Author: SP
+# Changes:
+#   SP - Added admin support
+#   KS - Added admin options
+#   SP - Refractored KS's code.
+
 class GroupsController < ApplicationController
   before_action :set_group, only: [:show, :edit, :update, :destroy, :attribute]
   respond_to :html, :js
@@ -52,18 +54,20 @@ class GroupsController < ApplicationController
   # PATCH/PUT /groups/1.json
   def update
     @type = params[:type]
-    if @type == "addAdmin"
-    @user = User.find(params[:admin])
-    @group.admins << @user
-  end
-    if @type == "removeAdmin"
-      @user=User.find(params[:admin])
-      @group.admins.delete(@user)
+    if (@type.present?)
+      user = User.find(params[:user_id])
+      user_group = set_group
+      if @type == "addAdmin" && !@group.admins.include?(user)
+        @group.admins << user
+      end
+      if @type == "removeAdmin" && @group.admins.include?(user)
+        @group.admins.delete(user)
+      end
+      if @type == "removeUser"
+        user.groups.delete(user_group)
+      end
     end
-    if @type == "removeUser"
-      @user=User.find(params[:admin])
-      @group.users.delete(@user)
-    end
+
     respond_to do |format|
       if @group.update(group_params)
         format.html { redirect_to @group, notice: 'Group was successfully updated.' }
@@ -93,6 +97,6 @@ class GroupsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def group_params
-      params.require(:id).permit(:type, :admin, :calendar_id, :method)
+      params.require(:group).permit(:type, :group, :calendar_id, :method, :user_id)
     end
-end
+  end

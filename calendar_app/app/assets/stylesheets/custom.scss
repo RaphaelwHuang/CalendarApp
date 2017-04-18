@@ -105,7 +105,7 @@ button {
 }
 
 /* Allows for links to look just like buttons */
-a.button {
+.button {
   -webkit-appearance: button;
   -moz-appearance: button;
   appearance: button;
