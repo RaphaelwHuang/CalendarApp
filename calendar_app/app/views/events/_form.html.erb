@@ -1,4 +1,7 @@
-
+<!-- Modified:
+          JA: added maxLength to event name
+                changed selection time for start/end day
+-->
 <%= form_for(event) do |f| %>
   <% if event.errors.any? %>
     <div id="error_explanation">
@@ -26,11 +29,14 @@
   </div>
   <div class="field">
     <%= f.label :start_day %><br>
-    <%= f.text_field :start_day %>
+    <% days = ['Mon', 'Tue', 'Wen', 'Thu', 'Fri', 'Sat', 'Sun'] %>
+
+      <%= f.select :start_day, ['Mon', 'Tue', 'Wen', 'Thu', 'Fri', 'Sat', 'Sun']%>
+
   </div>
   <div class="field">
     <%= f.label :end_day %><br>
-    <%= f.text_field :end_day %>
+    <%= f.select :end_day, ['Mon', 'Tue', 'Wen', 'Thu', 'Fri', 'Sat', 'Sun']%>
   </div>
   <div class="actions">
     <%= f.submit %>

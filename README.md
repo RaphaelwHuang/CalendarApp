@@ -28,6 +28,10 @@
 * Created partials for adding event, creating/joining group
 * Login/Sign up buttons on home page
 * navigation bar and footer
+* Modified styling for collapse forms to be more readable
+* Implemented adding a user to a specific groups (collaborated with SP, KS)
+* Routing modifications (when user logs in)
+
 
 
 ##### Kenton Steiner
@@ -46,4 +50,3 @@
 * Created helpers for events and personal
 * Created calendar on personal page
 * General bug fixing
-
