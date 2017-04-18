@@ -1,0 +1,13 @@
+<% group.users.each do |user| %>
+ 	<tr>
+ 		<td><%= user.fname %></td>
+ 		<td><%= user.lname %></td>
+ 		<td><%= user.email %></td>
+ 		<td><%= group.admins.include? user %></td>
+ 		<% if group.admins.include? current_user %>
+ 		<td><button><%= link_to 'Promote', group_path(:admin => user.id,:type => "addAdmin", :group => group.id), method: :put %></button></td>
+ 		<td><button><%= link_to 'Demote', group_path(:admin => user.id,:type => "removeAdmin", :group => group.id), method: :put %></button></td>
+ 		<td><button><%= link_to 'Remove', group_path(:admin => user.id,:type => "removeUser", :group => group.id), method: :put %></button></td>
+ 		<% end %>
+ 	</tr>
+<% end %>

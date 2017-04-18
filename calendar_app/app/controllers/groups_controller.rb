@@ -4,7 +4,8 @@ Changes:
   SP - Added admin support
 =end
 class GroupsController < ApplicationController
-  before_action :set_group, only: [:show, :edit, :update, :destroy]
+  before_action :set_group, only: [:show, :edit, :update, :destroy, :attribute]
+  respond_to :html, :js
 
   # GET /groups
   # GET /groups.json
@@ -50,7 +51,19 @@ class GroupsController < ApplicationController
   # PATCH/PUT /groups/1
   # PATCH/PUT /groups/1.json
   def update
-
+    @type = params[:type]
+    if @type == "addAdmin"
+    @user = User.find(params[:admin])
+    @group.admins << @user
+  end
+    if @type == "removeAdmin"
+      @user=User.find(params[:admin])
+      @group.admins.delete(@user)
+    end
+    if @type == "removeUser"
+      @user=User.find(params[:admin])
+      @group.users.delete(@user)
+    end
     respond_to do |format|
       if @group.update(group_params)
         format.html { redirect_to @group, notice: 'Group was successfully updated.' }
@@ -80,6 +93,6 @@ class GroupsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def group_params
-      params.require(:group).permit(:name, :calendar_id)
+      params.require(:id).permit(:type, :admin, :calendar_id, :method)
     end
 end
