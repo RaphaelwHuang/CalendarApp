@@ -7,6 +7,7 @@
 
 class GroupsController < ApplicationController
   before_action :set_group, only: [:show, :edit, :update, :destroy, :attribute]
+  before_action :authenticate_user!
   respond_to :html, :js
 
   # GET /groups
