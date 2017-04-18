@@ -42,6 +42,8 @@
 * General routing modifications
 * Set devise settings
 * Created Static pages about and contact
+* Added promotion to admin, demotion from admin, removal of a user from a group features
+* General bug fixing
 
 ##### Raphael Huang
 * Added basic styling for events, calendar
