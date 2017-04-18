@@ -1,4 +1,9 @@
 
+<!--Modified:
+      JA: Only displaying groups user is currently in,
+              opposed to every single group
+    -->
+    
 <h1><%= current_user.fname %>'s Groups</h1>
 
 <table class = "table table-striped">
@@ -21,7 +26,7 @@
               <td><%= group.users.distinct.count %></td>
               <td><%= button_to "Show", group, method: "get", class: "button" %></td>
             </tr>
-    
+
       <% end %> <!--END OF IF-->
     <% end %> <!-- END OF GROUP -->
     <% end %>
