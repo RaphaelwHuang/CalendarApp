@@ -9,6 +9,8 @@ Changes: SP - button extends bootstrap button
 
 $sky-blue: #caebf2;
 $breeze: rgba(67, 132, 150, 0.95);
+$breeze-light: rgba(67, 132, 150, 0.10);
+
 
 /* universal */
 
@@ -110,4 +112,14 @@ a.button {
 
   text-decoration: none;
   @extend button;
+}
+
+.collapse{
+  background-color: $breeze-light;
+  margin-top: 10px;
+  padding-top: 0px;
+  padding-left: 10px;
+  padding-bottom: 10px;
+  margin-right: 15px;
+  padding-right: 0px;
 }
