@@ -63,6 +63,8 @@ p {
   font-size: 1.1em;
   line-height: 1.7em;
 }
+
+
 /* footer */
 
 footer {
@@ -94,17 +96,21 @@ footer ul li button {
   float: left;
   margin-left: 15px;
 }
+
 button a{
   color: black !important;
   background-color: $sky-blue !important;
 }
+
 button {
   @extend .btn;
   font-color: black;
   background-color: $sky-blue;
 }
 
+
 /* Allows for links to look just like buttons */
+
 a.button, .signup, .login{
 
   -webkit-appearance: button;
@@ -116,7 +122,25 @@ a.button, .signup, .login{
 }
 
 
+/* For calendar */
+
+.bg {
+  background-color: darkturquoise;
+  color: #ffffff;
+}
+
+.size-1 {
+  margin-top: 15px;
+  font-size: 24px;
+}
+
+.size-2 {
+  font-size: 15px;
+}
+
+
 /*For collapsable forms*/
+
 .collapse{
   background-color: $breeze-light;
   margin-top: 10px !important;
@@ -134,9 +158,12 @@ a.button, .signup, .login{
 
 }
 
+
 /*For logo */
+
 .logo{
   width: 250px;
 }
+
 
 /* Error message */
