@@ -1,3 +1,8 @@
+# Author: SP
+# Changes:
+#   SP - Redirected the devise ones the user controller and renamed
+#   JA & RH - Added static pages
+#   SP - Added new routes for new groups methods
 Rails.application.routes.draw do
   authenticated :user do
     root to: 'personal#index', as: :authenticated_root
@@ -21,7 +26,13 @@ Rails.application.routes.draw do
   resources :schedules
   resources :administrates
   resources :comprises
-  resources :groups
+  resources :groups do
+    collection do
+      patch :promote
+      patch :demote
+      patch :remove
+    end
+  end
   resources :events
   resources :calendars
 

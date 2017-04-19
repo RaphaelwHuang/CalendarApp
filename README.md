@@ -11,11 +11,12 @@
 
 ##### Sunny Patel
 * Implemented whole schema
-* Implemented models
+* All things related to the models
 * General schema modifications
 * Installed devise
 * Implemented all things related to devise (routes, controllers, model, views)
 * Collapsible forms
+* All things related to promote, demote, remove
 * General refractoring of code
 * General header modifications
 * General routing modifications
@@ -34,6 +35,7 @@
 
 
 
+
 ##### Kenton Steiner
 * General schema modifications
 * Styling and editing for the pages in views for groups, users
@@ -42,7 +44,7 @@
 * General routing modifications
 * Set devise settings
 * Created Static pages about and contact
-* Added promotion to admin, demotion from admin, removal of a user from a group features
+* Created button/skeleton for promote, demote, remove
 * General bug fixing
 
 ##### Raphael Huang
