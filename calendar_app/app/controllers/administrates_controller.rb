@@ -1,6 +1,6 @@
 class AdministratesController < ApplicationController
   before_action :set_administrate, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   # GET /administrates
   # GET /administrates.json
   def index

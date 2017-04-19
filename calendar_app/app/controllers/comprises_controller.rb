@@ -1,6 +1,6 @@
 class ComprisesController < ApplicationController
   before_action :set_comprise, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   # GET /comprises
   # GET /comprises.json
   def index
