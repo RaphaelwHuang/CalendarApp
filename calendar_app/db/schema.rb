@@ -71,14 +71,21 @@ ActiveRecord::Schema.define(version: 20170418234800) do
   add_index "groups", ["calendar_id"], name: "index_groups_on_calendar_id"
 
   create_table "schedules", force: :cascade do |t|
-    t.integer  "calendar_id"
+    t.string   "name"
+    t.time     "start_time"
+    t.time     "end_time"
+    t.string   "start_day"
+    t.string   "end_day"
+    t.integer  "user_id"
+    t.integer  "group_id"
     t.integer  "event_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  add_index "schedules", ["calendar_id"], name: "index_schedules_on_calendar_id"
   add_index "schedules", ["event_id"], name: "index_schedules_on_event_id"
+  add_index "schedules", ["group_id"], name: "index_schedules_on_group_id"
+  add_index "schedules", ["user_id"], name: "index_schedules_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
