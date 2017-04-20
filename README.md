@@ -47,10 +47,14 @@
 * Created button/skeleton for promote, demote, remove
 * General bug fixing
 
+
 ##### Raphael Huang
 * Added basic styling for events, calendar
 * Made modifications to routes, model and views
 * Modified controller methods for personal
-* Created helpers for events and personal
+* Created helpers for events, groups and personal
 * Created calendar on personal page
+* Created calendar on group page
+* Changed the database of the schedule
+* General schema modifications
 * General bug fixing
