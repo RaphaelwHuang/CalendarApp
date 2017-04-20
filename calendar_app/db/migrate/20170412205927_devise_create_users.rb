@@ -32,6 +32,13 @@ class DeviseCreateUsers < ActiveRecord::Migration
 
       t.string :fname
       t.string :lname
+      t.string :bio
+      t.string :hometown
+      t.string :school
+      t.string :nickname
+      t.string :job
+      t.string :grade
+      t.string :major
       t.references :calendar
 
       t.timestamps null: false
