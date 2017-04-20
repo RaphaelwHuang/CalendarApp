@@ -43,12 +43,12 @@ class GroupsController < ApplicationController
       if !@admins.include?(@user)
         @admins << @user
         format.html { redirect_to @group, notice: "#{@user.fname} was promoted!" }
-      
+
       else
         format.html { redirect_to @group, alert: "#{@user.fname} is already an Admin!" }
-      
+
       end
-      
+
       format.json { render :show, status: :ok, location: @group }
     end
   end
@@ -59,11 +59,11 @@ class GroupsController < ApplicationController
       if @admins.include?(@user)
         @admins.delete(@user)
         format.html { redirect_to @group, notice: "#{@user.fname} was demoted!" }
-      
+
       else
         format.html { redirect_to @group, alert: "#{@user.fname} isn't an Admin!" }
       end
-      
+
       format.json { render :show, status: :ok, location: @group }
     end
   end
