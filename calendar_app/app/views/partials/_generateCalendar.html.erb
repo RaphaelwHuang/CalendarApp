@@ -4,6 +4,7 @@ Changes:
   SP - Completely refactored code. Created this partial file.
   RH - Minor change the syntax
   JA - Changed/Modified current styling
+  RH - Added function that the check the current user
 %>
 
   <%# Header portion of calendar %>
@@ -35,28 +36,30 @@ Changes:
         <%# Content of calendar. Iterates through all events  %>
         <tbody>
           <% @events.each do |event| %>
-          <tr>
-            <th scope="row">
-              <%= event.start_time.strftime("%H:%M").to_s %>
-              -
-              <%= event.end_time.strftime("%H:%M").to_s %>
-            </th>
-            <%# iterate through all the weeds to see where the event falls %>
-            <% %w(monday tuesday wednesday thursday friday saturday sunday).each do |weekday| %>
-            <td>
-              <% if event.start_day.to_s.downcase == weekday %>
-                <%= event.name %>
-              <% end %>
-              <% if event.start_day.to_s.downcase != event.end_day.to_s.downcase %>
-                <% if event.end_day.to_s.downcase == weekday %>
-                  <%= event.name %>
-                <% end %>
-              <% end %>
-            </td>
+            <% if check_user(event) %>
+                <tr>
+                  <th scope="row">
+                    <%= event.start_time.strftime("%H:%M").to_s %>
+                    -
+                    <%= event.end_time.strftime("%H:%M").to_s %>
+                  </th>
+                  <%# iterate through all the weeds to see where the event falls %>
+                  <% %w(monday tuesday wednesday thursday friday saturday sunday).each do |weekday| %>
+                      <td>
+                        <% if event.start_day.to_s.downcase == weekday %>
+                            <%= event.name %>
+                        <% end %>
+                        <% if event.start_day.to_s.downcase != event.end_day.to_s.downcase %>
+                            <% if event.end_day.to_s.downcase == weekday %>
+                                <%= event.name %>
+                            <% end %>
+                        <% end %>
+                      </td>
+                  <% end %>
+                </tr>
             <% end %>
-          </tr>
-          <% end %>
-            </tbody>
+        <% end %>
+        </tbody>
       </table>
     </div>
   </div>
