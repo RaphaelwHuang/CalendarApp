@@ -5,6 +5,7 @@ Changes:
   RH - Minor change the syntax
   JA - Changed/Modified current styling
   RH - Added function that the check the current user
+  RH - Added group meetings to personal calendar
 %>
 
   <%# Header portion of calendar %>
@@ -52,6 +53,33 @@ Changes:
                         <% if event.start_day.to_s.downcase != event.end_day.to_s.downcase %>
                             <% if event.end_day.to_s.downcase == weekday %>
                                 <%= event.name %>
+                            <% end %>
+                        <% end %>
+                      </td>
+                  <% end %>
+                </tr>
+            <% end %>
+        <% end %>
+
+        <%# Send group meeting to personal calendar  %>
+        <% @schedules = Schedule.all %>
+        <% @schedules.each do |schedule| %>
+            <% if schedule.user_id == current_user.id %>
+                <tr>
+                  <th scope="row">
+                    <%= schedule.start_time.strftime("%H:%M").to_s %>
+                    -
+                    <%= schedule.end_time.strftime("%H:%M").to_s %>
+                  </th>
+                  <%# iterate through all the weeds to see where the event falls %>
+                  <% %w(monday tuesday wednesday thursday friday saturday sunday).each do |weekday| %>
+                      <td>
+                        <% if schedule.start_day.to_s.downcase == weekday %>
+                            <%= schedule.name %>
+                        <% end %>
+                        <% if schedule.start_day.to_s.downcase != schedule.end_day.to_s.downcase %>
+                            <% if schedule.end_day.to_s.downcase == weekday %>
+                                <%= schedule.name %>
                             <% end %>
                         <% end %>
                       </td>
