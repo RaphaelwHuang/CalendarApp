@@ -3,6 +3,7 @@ Author: JA
 Changes:
   RH - Added the calendar, minor change the syntax
   SP - Created partials + added collapsible forms for addEvent and joinGroup
+  JA - got rid of joinGroup
 %>
 <div class="personal">
   <h1>
@@ -15,6 +16,8 @@ Changes:
     <%= render './partials/addEvent' %>
     <br>
     <%= render './partials/viewEvents' %>
+    <h3> Groups </h3>
+    <button><%= link_to "View Groups",  groups_path %></button>
 
   </div>
   <div class="right">
