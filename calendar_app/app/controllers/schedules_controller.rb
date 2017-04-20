@@ -1,3 +1,4 @@
+# Author: RH
 class SchedulesController < ApplicationController
   before_action :set_schedule, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
@@ -27,9 +28,13 @@ class SchedulesController < ApplicationController
     @schedule = Schedule.new(schedule_params)
     @user = current_user
     @schedule.user_id = @user.id
-    @group = Group.find(params[:group])  #WRONG!!! IF FIGURE OUT THIS, THE ADD MEETING CAN WORK
-    @schedule.group_id = @group.id
-    @schedule.save!
+    @groups = Group.all
+
+    @groups.each do |group|
+      @schedule.group_id = group.id
+      @schedule.save!
+    end
+
     respond_to do |format|
       if @schedule.save
         format.html { redirect_to @schedule, notice: 'Schedule was successfully created.' }
