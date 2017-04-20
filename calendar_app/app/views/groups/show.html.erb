@@ -1,6 +1,7 @@
 
-
-
+<!--
+  JA: Modified/Reconstructed entire layout, added additional functionility
+-->
 <h1 class = "groupName"> <%= @group.name %> </h1>
 <div class = "center">
   <h2>
@@ -52,6 +53,7 @@
 <div id = "usersTable ">
   <%= render partial: 'user_Table', locals: {group: @group} %>
 </div>
+
 
 <script>
 $(document).ready(function(){
