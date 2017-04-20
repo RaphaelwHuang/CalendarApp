@@ -6,13 +6,15 @@
 #   SP - Refractored KS's code.
 #   SP - Added promote, demote, remove methods as well as their helper
 #     methods. Seriously cleaned up code.
+#   KS - Added add method
+#   SP - Methods deal with some unexpected conditions
 
 class GroupsController < ApplicationController
   before_action :set_group, only: [:show, :edit, :update, :destroy,\
    :attribute, :promote, :demote, :add, :remove, :set_admins, :set_users]
   before_action :set_users, only: [:remove, :add]
   before_action :set_admins, only: [:promote, :demote]
-  before_action :set_user, only: [:promote, :demote, :remove]
+  before_action :set_user, only: [:promote, :demote, :remove, :add]
   before_action :authenticate_user!
   respond_to :html, :js
 
@@ -71,8 +73,12 @@ class GroupsController < ApplicationController
   # PATCH /groups/1/add.json
   def add
     respond_to do |format|
-      @user.groups << @group
-      format.html { redirect_to @group, notice: "#{@user.fname} was added to #{@group.name}!" }
+      if !@users.include?(@user)
+        @user.groups << @group
+        format.html { redirect_to @group, notice: "#{@user.fname} was added to #{@group.name}!" }
+      else
+        format.html { redirect_to @group, alert: "#{@user.fname} is already in #{@group.name}!" }
+      end
       format.json { render :show, status: :ok, location: @group }
     end
   end
@@ -81,8 +87,14 @@ class GroupsController < ApplicationController
   def remove
     respond_to do |format|
       @user.groups.delete(@group)
-      format.html { redirect_to @group, notice: "#{@user.fname} was removed from #{@group.name}!" }
-      format.json { render :show, status: :ok, location: @group }
+      # .any? because if the group is somehow full of NIL objects, then we should delete
+      if @group.users.any?  
+        format.html { redirect_to @group, notice: "#{@user.fname} was removed from #{@group.name}!" }
+      else
+        @group.destroy
+        format.html { redirect_to @group, alert: "Group was removed because it's empty."}
+      end
+      format.json { render :index, status: :ok, location: @group }
     end
   end
 

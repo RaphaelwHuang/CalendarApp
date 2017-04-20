@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170418234800) do
+ActiveRecord::Schema.define(version: 20170420232711) do
 
   create_table "administrates", force: :cascade do |t|
     t.integer  "group_id"
@@ -52,8 +52,10 @@ ActiveRecord::Schema.define(version: 20170418234800) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "user_id"
+    t.integer  "group_id"
   end
 
+  add_index "events", ["group_id"], name: "index_events_on_group_id"
   add_index "events", ["user_id"], name: "index_events_on_user_id"
 
   create_table "groups", force: :cascade do |t|
@@ -86,6 +88,11 @@ ActiveRecord::Schema.define(version: 20170418234800) do
     t.integer  "calendar_id"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
+    t.string   "nickname"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
