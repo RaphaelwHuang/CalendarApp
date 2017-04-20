@@ -1,11 +1,6 @@
-<%#
-Authored by: RH
-Changes:
-  RH - Added function that the check the current user
-%>
 <p id="notice"><%= notice %></p>
 
-<h1>List of Event</h1>
+<h1>List of Events</h1>
 <h2><%= find_day %></h2>
 
 <table class = "table table-striped">
@@ -22,7 +17,6 @@ Changes:
 
   <tbody>
     <% @events.each do |event| %>
-      <% if check_user(event) %>
       <tr>
         <td><%= event.name %></td>
         <td><%= event.start_time.strftime("%H:%M").to_s %></td>
@@ -36,8 +30,7 @@ Changes:
           <%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %>
         </td>
       </tr>
-      <% end %>
-  <% end %>
+    <% end %>
   </tbody>
 </table>
 

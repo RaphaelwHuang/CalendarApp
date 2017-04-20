@@ -1,3 +1,6 @@
+<!--
+  JA: Promote option is gone is user is already an admin
+-->
 <% group.users.each do |user| %>
  	<tr>
  		<td><%= user.fname %></td>
@@ -5,7 +8,9 @@
  		<td><%= user.email %></td>
  		<td><%= group.admins.include? user %></td>
  		<% if group.admins.include? current_user %>
+    <% if user.id != current_user.id %>
  		<td><%= button_to 'Promote', promote_groups_path(user_id: user.id, id: group.id), method: :patch, class: "button" %></td>
+    <%end%>
  		<td><%= button_to 'Demote', demote_groups_path(user_id: user.id, id: group.id), method: :patch, class: "button" %></td>
  		<td><%= button_to 'Remove', remove_groups_path(user_id: user.id, id: group.id), method: :patch, class: "button" %></td>
  		<% end %>
