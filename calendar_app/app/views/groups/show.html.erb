@@ -7,7 +7,6 @@
   <strong>Group Creator:</strong>
   <%= @group.admins[0].fname + ' ' + @group.admins[0].lname %>
 </p>
-
 <p>
   <strong>Group ID:</strong>
   <%= @group.id %>
@@ -26,3 +25,16 @@
 	<button><%= link_to 'Delete Group', group_path(@group), method: :delete, data: {confirm: 'Are you sure you want to delete this group? This cannot be undone'} %></button>
 <% end %>
 <button><%= link_to 'Groups Home', groups_path %></button>
+<br>
+<br>
+<div class ="left">
+  <h3> Group Meeting </h3>
+  <%= render './partials/addMeeting' %>
+  <br>
+
+  <%= button_to 'Create New Group', new_group_path, method: "get", class: "button" %>
+</div>
+<div class="right">
+  <%= render './partials/generateGroupCalendar', object: @group %>
+</div>
+

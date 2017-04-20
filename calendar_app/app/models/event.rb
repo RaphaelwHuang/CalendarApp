@@ -3,7 +3,7 @@
 
 class Event < ActiveRecord::Base
   belongs_to :user
-
+  has_many :schedules
 
   validates :name, length: { minimum: 0 },
             presence: true

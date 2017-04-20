@@ -2,6 +2,7 @@
   # JA: Added  method to get groups only user is apart of
 module GroupsHelper
 
+
 def user_groups
   @user_groups = []
   @groups.each do |group|
