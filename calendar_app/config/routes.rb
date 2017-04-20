@@ -23,7 +23,6 @@ Rails.application.routes.draw do
     sign_out: 'logout',
     sign_up: 'register'
   }
-  resources :schedules
   resources :administrates
   resources :comprises
   resources :groups do
@@ -34,7 +33,6 @@ Rails.application.routes.draw do
     end
   end
   resources :events
-  resources :calendars
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

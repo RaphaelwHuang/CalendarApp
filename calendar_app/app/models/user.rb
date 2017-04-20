@@ -7,7 +7,6 @@ class User < ActiveRecord::Base
 
   validates :fname, presence: true, format: {with: /\A[a-zA-Z]+\z/, message: "Firstname can only be letter"}
   has_many :events
-  has_many :calendars
   has_many :comprises
   has_many :administrates
   has_many :groups, through: :comprises
