@@ -1,0 +1,94 @@
+<%#
+Authored by: RH
+%>
+
+  <%# Header portion of calendar %>
+  <div class="calendar">
+    <div class="container-fluid bg row text-center">
+      <div class="col-xs-12 col-sm-12 col-md-12">
+        <p class="text-center size-1">
+          Week <%= find_week %>
+        </p>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-12">
+        <p class="text-center size-2">
+          <%= find_day %>
+          <br>
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <table class="table table-hover table-bordered">
+        <thead>
+          <tr>
+            <% %w(Time Mon Tue Wed Thu Fri Sat Sun).each do |header_info|%>
+            <th><%= header_info %></th>
+            <% end %>
+
+          </tr>
+        </thead>
+
+        <%# Content of calendar. Iterates through all events  %>
+        <tbody>
+        <% @group.users.each do |user| %>
+            <% user.events.each do |event| %>
+                <tr>
+                  <th scope="row">
+                    <%= event.start_time.strftime("%H:%M").to_s %>
+                    -
+                    <%= event.end_time.strftime("%H:%M").to_s %>
+                  </th>
+
+                  <%# iterate through all the weeds to see where the event falls %>
+                  <% %w(monday tuesday wednesday thursday friday saturday sunday).each do |weekday| %>
+                      <% if event.start_day.to_s.downcase == weekday %>
+                          <% if user.__id__ != 0 %>
+                              <td class="bg-2">BUSY
+                          <% end %>
+
+                      <% else if event.start_day.to_s.downcase != event.end_day.to_s.downcase %>
+                              <% if event.end_day.to_s.downcase == weekday %>
+
+                                  <% if user.__id__ != 0 %>
+                                      <td class="bg-2">BUSY
+                                  <% end %> <%# End the check the user.id %>
+                              <% else %>
+                                  <td>
+                              <% end %> <%# End the check the end_day %>
+                      <% else %>
+                          <td>
+                      <% end %>  <%# End the check the whether end_day is equal start_day %>
+                      </td>
+                      <% end %>
+                  <% end %> <%# End the loop week days %>
+                </tr>
+            <% end %> <%# End the loop events %>
+        <% end %> <%# End the loop users %>
+
+
+        <% @group.schedules.each do |schedule| %>
+            <tr>
+              <th scope="row">
+                <%= schedule.start_time.strftime("%H:%M").to_s %>
+                -
+                <%= schedule.end_time.strftime("%H:%M").to_s %>
+              </th>
+              <%# iterate through all the weeds to see where the event falls %>
+              <% %w(monday tuesday wednesday thursday friday saturday sunday).each do |weekday| %>
+                  <td>
+                    <% if schedule.start_day.to_s.downcase == weekday %>
+                        <%= schedule.name %>
+                    <% end %>
+                    <% if schedule.start_day.to_s.downcase != schedule.end_day.to_s.downcase %>
+                        <% if schedule.end_day.to_s.downcase == weekday %>
+                            <%= schedule.name %>
+                        <% end %>
+                    <% end %>
+                  </td>
+              <% end %>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
