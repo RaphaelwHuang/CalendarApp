@@ -4,14 +4,15 @@ Changes:
   SP - Completely refactored code. Created this partial file.
   RH - Minor change the syntax
   JA - Changed/Modified current styling
+  RH - Added function that the check the current user
 %>
 
   <%# Header portion of calendar %>
   <div class="calendar">
-    <div class="container-fluid bg row text-center">
+    <div class="container-fluid row text-center" style="background-color: #caebf2">
       <div class="col-xs-12 col-sm-12 col-md-12">
         <p class="text-center size-1">
-          <%= find_week %>
+          Week <%= find_week %>
         </p>
       </div>
       <div class="col-xs-12 col-sm-12 col-md-12">

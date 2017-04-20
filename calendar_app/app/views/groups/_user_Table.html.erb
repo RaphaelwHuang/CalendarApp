@@ -1,6 +1,12 @@
-<div id = "table">
+
+<div >
+  <!-- <button data-toggle="collapse" data-target="#viewUserCollapse" class="btn-md">View Users in Group</button> -->
+
+
+<!-- <div id = "viewUserCollapse" class="collapse"> -->
+  <div id = "viewUserCollapse" ">
 <table class = "table table-striped">
-  <thead class="thead-inverse">
+  <thead class="thead-inverse" style="background-color: #778899;">
   	<th>First Name</th>
   	<th>Last Name</th>
   	<th>Email</th>
@@ -13,4 +19,5 @@
     <%= render partial: 'user_grid', locals: {group: group} %>
   </tbody>
 </table>
+</div>
 </div>

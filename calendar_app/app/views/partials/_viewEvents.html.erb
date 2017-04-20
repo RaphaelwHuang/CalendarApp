@@ -2,7 +2,8 @@
 Author: JA
 Changes:
 	SP - works as intended
+  JA - Refixed button to have same styling 
 %>
 <div class = "eventButton ">
-<%= button_to "View Events", events_path, method: "get", class: "button" %>
+<button><%= link_to "View Events", events_path, method: "get" %></button>
 </div>

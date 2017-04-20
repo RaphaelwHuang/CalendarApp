@@ -1,8 +1,8 @@
 <%#
 Author: SP
 %>
-<div class = joinGroup>
-  <button data-toggle="collapse" data-target="#groupFormCollapse" class="btn-md">Join New Group</button>
+<div>
+  <button data-toggle="collapse" data-target="#groupFormCollapse" class="btn-md">Add user to group </button>
   <div id="groupFormCollapse" class="collapse">
   <br>
   <%= render partial:'comprises/form', locals: {comprise: Comprise.new} %>

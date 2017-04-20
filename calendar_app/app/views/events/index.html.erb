@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>List of Event</h1>
+<h1>List of Events</h1>
 <h2><%= find_day %></h2>
 
 <table class = "table table-striped">
@@ -17,6 +17,7 @@
 
   <tbody>
     <% @events.each do |event| %>
+      <% if check_user(event) %>
       <tr>
         <td><%= event.name %></td>
         <td><%= event.start_time.strftime("%H:%M").to_s %></td>
@@ -30,6 +31,7 @@
           <%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %>
         </td>
       </tr>
+      <%end%>
     <% end %>
   </tbody>
 </table>

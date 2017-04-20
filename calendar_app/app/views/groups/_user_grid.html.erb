@@ -1,3 +1,6 @@
+<!--
+  JA: Promote option is gone is user is already an admin
+-->
 <% group.users.each do |user| %>
  	<tr>
  		<td><%= user.fname %></td>
@@ -5,9 +8,13 @@
  		<td><%= user.email %></td>
  		<td><%= group.admins.include? user %></td>
  		<% if group.admins.include? current_user %>
- 		<td><%= button_to 'Promote', group_path(group: group, :type => "addAdmin",user_id: user.id), method: :put, class: "button" %></td>
- 		<td><%= button_to 'Demote', group_path(group: group, :type => "removeAdmin", user_id: user.id), method: :put, class: "button" %></td>
- 		<td><%= button_to 'Remove', group_path(group: group, :type => "removeUser", user_id: user.id), method: :put, class: "button" %></td>
+    <% if user.id != current_user.id %>
+ 		<td><%= button_to 'Promote', promote_groups_path(user_id: user.id, id: group.id), method: :patch, class: "button" %></td>
+    <% elsif  user.id != current_user.id && group.admins.length != 1 %>
+ 		<td><%= button_to 'Demote', demote_groups_path(user_id: user.id, id: group.id), method: :patch, class: "button" %></td>
+    <%end%>
+    <!-- Need to check size of group before remove, or if size of user goes to zero goes to zero, delete group -->
+ 		<td><%= button_to 'Remove', remove_groups_path(user_id: user.id, id: group.id), method: :patch, class: "button" %></td>
  		<% end %>
  	</tr>
 <% end %>

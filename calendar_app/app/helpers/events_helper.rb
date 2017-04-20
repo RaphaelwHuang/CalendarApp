@@ -1,3 +1,6 @@
+# Author: RH
+# Changes:
+#   RH - Added check current user support
 require 'date'
 
 module EventsHelper
@@ -16,6 +19,11 @@ module EventsHelper
 
   def find_week
      Time.now.strftime("%U")
+  end
+
+  def check_user(event)
+    @user = current_user
+    event.user_id == @user.id
   end
 
 end

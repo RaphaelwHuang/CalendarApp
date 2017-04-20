@@ -4,9 +4,15 @@
 #   SP - Added admin support
 #   KS - Added admin options
 #   SP - Refractored KS's code.
+#   SP - Added promote, demote, remove methods as well as their helper
+#     methods. Seriously cleaned up code.
 
 class GroupsController < ApplicationController
-  before_action :set_group, only: [:show, :edit, :update, :destroy, :attribute]
+  before_action :set_group, only: [:show, :edit, :update, :destroy,\
+   :attribute, :promote, :demote, :remove, :set_admins, :set_users]
+  before_action :set_users, only: [:remove]
+  before_action :set_admins, only: [:promote, :demote]
+  before_action :set_user, only: [:promote, :demote, :remove]
   before_action :authenticate_user!
   respond_to :html, :js
 
@@ -29,6 +35,46 @@ class GroupsController < ApplicationController
 
   # GET /groups/1/edit
   def edit
+  end
+
+  # PATCH /groups/1/promote.json
+  def promote
+    respond_to do |format|
+      if !@admins.include?(@user)
+        @admins << @user
+        format.html { redirect_to @group, notice: "#{@user.fname} was promoted!" }
+
+      else
+        format.html { redirect_to @group, alert: "#{@user.fname} is already an Admin!" }
+
+      end
+
+      format.json { render :show, status: :ok, location: @group }
+    end
+  end
+
+  # PATCH /groups/1/demote.json
+  def demote
+    respond_to do |format|
+      if @admins.include?(@user)
+        @admins.delete(@user)
+        format.html { redirect_to @group, notice: "#{@user.fname} was demoted!" }
+
+      else
+        format.html { redirect_to @group, alert: "#{@user.fname} isn't an Admin!" }
+      end
+
+      format.json { render :show, status: :ok, location: @group }
+    end
+  end
+
+  # PATCH /groups/1/remove.json
+  def remove
+    respond_to do |format|
+      @user.groups.delete(@group)
+      format.html { redirect_to @group, notice: "#{@user.fname} was removed from #{@group.name}!" }
+      format.json { render :show, status: :ok, location: @group }
+    end
   end
 
   # POST /groups
@@ -54,21 +100,6 @@ class GroupsController < ApplicationController
   # PATCH/PUT /groups/1
   # PATCH/PUT /groups/1.json
   def update
-    @type = params[:type]
-    if (@type.present?)
-      user = User.find(params[:user_id])
-      user_group = set_group
-      if @type == "addAdmin" && !@group.admins.include?(user)
-        @group.admins << user
-      end
-      if @type == "removeAdmin" && @group.admins.include?(user)
-        @group.admins.delete(user)
-      end
-      if @type == "removeUser"
-        user.groups.delete(user_group)
-      end
-    end
-
     respond_to do |format|
       if @group.update(group_params)
         format.html { redirect_to @group, notice: 'Group was successfully updated.' }
@@ -96,8 +127,19 @@ class GroupsController < ApplicationController
       @group = Group.find(params[:id])
     end
 
+    def set_admins
+      @admins = @group.admins
+    end
+
+    def set_user
+      @user = User.find(params[:user_id])
+    end
+
+    def set_users
+      @users = @group.users
+    end
     # Never trust parameters from the scary internet, only allow the white list through.
     def group_params
-      params.require(:group).permit(:type, :group, :calendar_id, :method, :user_id)
+      params.require(:group).permit( :name, :calendar_id, :method, :user_id)
     end
   end

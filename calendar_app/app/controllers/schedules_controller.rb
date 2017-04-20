@@ -1,31 +1,39 @@
+# Author: RH
 class SchedulesController < ApplicationController
   before_action :set_schedule, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-
-  # GET /schedules
-  # GET /schedules.json
+  # GET /schedule
+  # GET /schedule.json
   def index
     @schedules = Schedule.all
   end
 
-  # GET /schedules/1
-  # GET /schedules/1.json
+  # GET /schedule/1
+  # GET /schedule/1.json
   def show
   end
 
-  # GET /schedules/new
+  # GET /schedule/new
   def new
     @schedule = Schedule.new
   end
 
-  # GET /schedules/1/edit
+  # GET /schedule/1/edit
   def edit
   end
 
-  # POST /schedules
-  # POST /schedules.json
+  # POST /schedule
+  # POST /schedule.json
   def create
     @schedule = Schedule.new(schedule_params)
+    @user = current_user
+    @schedule.user_id = @user.id
+    @groups = Group.all
+
+    @groups.each do |group|
+      @schedule.group_id = group.id
+      @schedule.save!
+    end
 
     respond_to do |format|
       if @schedule.save
@@ -38,12 +46,12 @@ class SchedulesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /schedules/1
-  # PATCH/PUT /schedules/1.json
+  # PATCH/PUT /schedule/1
+  # PATCH/PUT /schedule/1.json
   def update
     respond_to do |format|
-      if @schedule.update(schedule_params)
-        format.html { redirect_to @schedule, notice: 'Schedule was successfully updated.' }
+      if @schedule.update(schedule_path)
+        format.html { redirect_to @schedule, notice: 'Event was successfully updated.' }
         format.json { render :show, status: :ok, location: @schedule }
       else
         format.html { render :edit }
@@ -52,8 +60,8 @@ class SchedulesController < ApplicationController
     end
   end
 
-  # DELETE /schedules/1
-  # DELETE /schedules/1.json
+  # DELETE /schedule/1
+  # DELETE /schedule/1.json
   def destroy
     @schedule.destroy
     respond_to do |format|
@@ -63,13 +71,13 @@ class SchedulesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_schedule
-      @schedule = Schedule.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_schedule
+    @schedule = Schedule.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def schedule_params
-      params.require(:schedule).permit(:calendar_id, :event_id)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def schedule_params
+    params.require(:schedule).permit(:name, :start_time, :end_time, :start_day, :end_day, :user_id, :schedules_id)
+  end
 end

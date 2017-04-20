@@ -129,6 +129,11 @@ a.button, .signup, .login{
   color: #ffffff;
 }
 
+.bg-2 {
+  background-color: mediumpurple;
+  color: #ffffff;
+}
+
 .size-1 {
   margin-top: 15px;
   font-size: 24px;
@@ -140,15 +145,8 @@ a.button, .signup, .login{
 
 
 /*For collapsable forms*/
-
 .collapse{
-  background-color: $breeze-light;
-  margin-top: 10px !important;
-  padding-top: 0px !important;
-  padding-left: 10px !important;
-  padding-bottom: 10px !important;
-  margin-right: 15px !important;
-  padding-right: 0px !important;
+
 }
 
 
@@ -157,7 +155,6 @@ a.button, .signup, .login{
   font-weight: bold;
 
 }
-
 
 /*For logo */
 

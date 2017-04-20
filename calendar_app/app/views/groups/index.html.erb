@@ -2,8 +2,9 @@
 <!--Modified:
       JA: Only displaying groups user is currently in,
               opposed to every single group
+      JA: Cleaned up code, and made it simpler
     -->
-    
+
 <h1><%= current_user.fname %>'s Groups</h1>
 
 <table class = "table table-striped">
@@ -17,19 +18,15 @@
   </thead>
 
   <tbody>
-    <% @groups.each do |group| %>
-      <% group.users.each do |user| %>
-        <% if user.email == current_user.email%>
+    <% @user_groups = user_groups %>
+    <% @user_groups.each do |group| %>
             <tr>
               <td><%= group.id %></td>
               <td><%= group.name %></td>
               <td><%= group.users.distinct.count %></td>
               <td><%= button_to "Show", group, method: "get", class: "button" %></td>
             </tr>
-
-      <% end %> <!--END OF IF-->
-    <% end %> <!-- END OF GROUP -->
-    <% end %>
+      <% end %>
   </tbody>
 </table>
 
