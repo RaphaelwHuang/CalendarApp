@@ -9,8 +9,8 @@
 
 class GroupsController < ApplicationController
   before_action :set_group, only: [:show, :edit, :update, :destroy,\
-   :attribute, :promote, :demote, :remove, :set_admins, :set_users]
-  before_action :set_users, only: [:remove]
+   :attribute, :promote, :demote, :add, :remove, :set_admins, :set_users]
+  before_action :set_users, only: [:remove, :add]
   before_action :set_admins, only: [:promote, :demote]
   before_action :set_user, only: [:promote, :demote, :remove]
   before_action :authenticate_user!
@@ -64,6 +64,15 @@ class GroupsController < ApplicationController
         format.html { redirect_to @group, alert: "#{@user.fname} isn't an Admin!" }
       end
 
+      format.json { render :show, status: :ok, location: @group }
+    end
+  end
+
+  # PATCH /groups/1/add.json
+  def add
+    respond_to do |format|
+      @user.groups << @group
+      format.html { redirect_to @group, notice: "#{@user.fname} was added to #{@group.name}!" }
       format.json { render :show, status: :ok, location: @group }
     end
   end
