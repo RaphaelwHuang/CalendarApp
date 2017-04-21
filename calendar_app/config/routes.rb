@@ -30,6 +30,7 @@ Rails.application.routes.draw do
       patch :promote
       patch :demote
       patch :remove
+      patch :add
     end
   end
   resources :events

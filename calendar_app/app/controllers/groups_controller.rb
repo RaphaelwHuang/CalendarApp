@@ -11,10 +11,10 @@
 
 class GroupsController < ApplicationController
   before_action :set_group, only: [:show, :edit, :update, :destroy,\
-   :attribute, :promote, :demote, :add, :remove, :set_admins, :set_users]
-  before_action :set_users, only: [:remove, :add]
+   :attribute, :promote, :demote, :remove, :set_admins, :set_users]
+  before_action :set_users, only: [:remove]
   before_action :set_admins, only: [:promote, :demote]
-  before_action :set_user, only: [:promote, :demote, :remove, :add]
+  before_action :set_user, only: [:promote, :demote, :remove]
   before_action :authenticate_user!
   respond_to :html, :js
 
@@ -72,6 +72,9 @@ class GroupsController < ApplicationController
 
   # PATCH /groups/1/add.json
   def add
+    @user = User.find(params[:group][:id])
+    @group = Group.find(params[:id])
+    @users = @group.users
     respond_to do |format|
       if !@users.include?(@user)
         @user.groups << @group
