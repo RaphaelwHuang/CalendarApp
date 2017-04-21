@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   get '/help', to: 'static_pages#help'
   get '/about', to: 'static_pages#about'
   get '/contact', to: 'static_pages#contact'
+  get '/view', to: 'groups#view'
+
 
   devise_for :users, controllers: {
     sessions: 'users/sessions', registrations: 'users/registrations'
@@ -23,6 +25,11 @@ Rails.application.routes.draw do
     sign_out: 'logout',
     sign_up: 'register'
   }
+  devise_scope :user do
+    get :profile, to: 'users/registrations'
+    patch :edit, to:'users/registrations#edit'
+  end
+
   resources :administrates
   resources :comprises
   resources :groups do
@@ -34,6 +41,8 @@ Rails.application.routes.draw do
     end
   end
   resources :events
+ 
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

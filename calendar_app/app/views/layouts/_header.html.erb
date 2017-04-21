@@ -22,10 +22,10 @@
 
         <li class = "drowndown">
             <a class="dropdown-toggle" data-toggle="dropdown" >
-            <%= current_user.nickname %><span class="caret"></span>
+            <%= current_user.fname %><span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
-              <li><%= link_to "Profile", edit_user_registration_path %></li>
+              <li><%= link_to "Profile", profile_path %></li>
               <li><%= link_to "Log out", destroy_user_session_path %></li>
           </ul>
         </li>

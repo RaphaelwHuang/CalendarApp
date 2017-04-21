@@ -1,0 +1,46 @@
+<div class='container'>
+	<div class='jumbotron center'>
+		<h2><%= current_user.fname + '\'s Profile' %></h2>
+      <% if current_user.nickname? %>
+         <i>"<%= current_user.nickname %>"</i>
+      <% end %>
+	</div>
+   </div>
+<div class='container'>
+	<div>
+		<div>
+		<% if current_user.avatar? %>
+      		<%= image_tag current_user.avatar.url(:medium) %>
+   		<% end %>
+   		<br><br>
+   		
+   		</div>
+   		<div><strong>Name: </strong><%= current_user.fname + ' ' + current_user.lname %></div>
+   		<% if current_user.bio? %>
+   		<div><strong>About <%= current_user.fname %>:</strong><br><%= current_user.bio %></div>
+   		<% end %>
+   		<% if current_user.hometown? %>
+   		<div><strong>Hometown: </strong><%= current_user.hometown %></div>
+   		<% end %>
+   		<% if current_user.school? %>
+   		<div><strong>School: </strong><%= current_user.school %></div>
+   		<% end %>
+   		<% if current_user.major? %>
+   		<div><strong>Major: </strong><%= current_user.major %></div>
+   		<% end %>
+   		<% if current_user.grade? %>
+   		<div><strong>Grade: </strong><%= current_user.grade %></div>
+   		<% end %>
+   		<% if current_user.job? %>
+   		<div><strong>Job: </strong><%= current_user.job %></div>
+   		<% end %>
+   	</div>
+   	<div>
+   	<%= button_to "Edit Profile", edit_user_registration_path, :method => :patch, class: "button"%>
+   	<%= button_to "Groups",  groups_path, class: "button" %>
+   	</div>
+</div>
+
+
+
+

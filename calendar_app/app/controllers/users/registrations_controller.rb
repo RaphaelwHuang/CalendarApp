@@ -1,7 +1,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
-
+  before_action :authenticate_user!, only: [:update, :show]
   # GET /resource/sign_up
   def new
     super
@@ -27,6 +27,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super
   end
 
+  def profile
+    render :show
+  end
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign
   # in to be expired now. This is useful if the user wants to
