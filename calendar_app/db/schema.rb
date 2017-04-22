@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170422195940) do
+ActiveRecord::Schema.define(version: 20170422215451) do
 
   create_table "administrates", force: :cascade do |t|
     t.integer  "group_id"
@@ -97,6 +97,8 @@ ActiveRecord::Schema.define(version: 20170422195940) do
     t.string   "school"
     t.string   "grade"
     t.string   "job"
+    t.string   "fname"
+    t.string   "lname"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
