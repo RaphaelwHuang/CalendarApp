@@ -18,7 +18,7 @@ class Event < ActiveRecord::Base
   validate :check_time
 
   def check_time
-    errors.add(:end_time, "should be the greater than Start time") if end_time.to_i <= start_time.to_i
+    errors.add(:end_time, "should be the greater than start time.") if end_time.to_i <= start_time.to_i  
   end
 
 end
