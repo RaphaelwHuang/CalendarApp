@@ -1,4 +1,4 @@
-<%= bootstrap_form_for(group) do |f| %>
+<%= bootstrap_form_for(group, layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-10",) do |f| %>
   <% if group.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(group.errors.count, "error") %> prohibited this group from being saved:</h2>
@@ -12,7 +12,7 @@
   <% end %>
 
  
-    <%= f.text_field :name, label: "Group Name*" %>
+    <%= f.text_field :name, label: "Group Name*", control_col: "col-sm-6" %>
     <%= f.text_area :bio, label: "Group Description" %>
 
     <%= f.submit label:"Create", class: "btn btn-success" %>

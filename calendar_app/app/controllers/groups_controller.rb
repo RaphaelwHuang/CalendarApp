@@ -10,6 +10,7 @@
 #   SP - Methods deal with some unexpected conditions
 #   JA - modified index method to only return groups user in
 #  JA - Creator of group cannot be removed as an admin, or removed from group
+#   KS - Added bio attribute to groups
 
 
 class GroupsController < ApplicationController
@@ -191,6 +192,6 @@ class GroupsController < ApplicationController
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def group_params
-      params.require(:group).permit( :name, :calendar_id, :method, :user_id)
+      params.require(:group).permit( :name, :calendar_id, :method, :user_id, :bio)
     end
   end

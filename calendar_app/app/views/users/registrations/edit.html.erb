@@ -1,5 +1,6 @@
 <!-- Author: KS 
 // 4/20 - Added extra fields to the user table
+  4/22 - Added Bootstrap form styling 
 -->
 
 <h1><u>Edit Your Profile</u></h1>
@@ -48,9 +49,6 @@
 
 <% end %>
 <small style="text-align:left;"><em>* Fields marked with a * must not be left blank</em></small>
-
-
-<h3>Delete Account</h3>
 
 <p><%= button_to "Delete Account", registration_path(resource_name), class: "center btn btn-danger", data: { confirm: "Are you sure you want to delete your account? This action cannot be undone." }, method: :delete %></p>
 </div>

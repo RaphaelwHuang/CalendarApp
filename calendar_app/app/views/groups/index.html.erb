@@ -3,10 +3,18 @@
       JA: Only displaying groups user is currently in,
               opposed to every single group
       JA: Cleaned up code, and made it simpler
+      KS: If user has no groups, Display a message to create a new group
     -->
 <div id = "groupsTable">
 <h1><%= current_user.fname %>'s Groups</h1>
-
+<% if @user_groups.count == 0 %>
+  <div id="nogroup">
+  <h3 style="text-align:center"> You are currently not in any groups! </h2>
+  <h3  style="text-align:center">Create a group to get started! </h3><br>
+  <div id="submit">
+  <%= render './partials/createGroupFromIndex'%>
+  </div>
+<% else %>
 <table class = "table table-striped">
   <thead class="thead-inverse">
     <tr>
@@ -31,6 +39,7 @@
 </table>
 
 <br>
-<%= render './partials/createGroup'%>
+<%= render './partials/createGroupFromIndex'%>
 
 </div>
+<% end %>
