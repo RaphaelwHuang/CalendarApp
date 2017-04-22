@@ -7,51 +7,44 @@ Authored by: RH
 
 <%# Content of calendar. Iterates through all events  %>
 <tbody>
-  <% @group.users.each do |user| %>
-  <% user.events.each do |event| %>
-  <tr>
+<% @group.users.each do |user| %>
+    <% user.events.each do |event| %>
+        <tr>
 
-    <!-- iterate through all the weeks to see where the event falls  -->
-    <% %w(monday tuesday wednesday thursday friday saturday sunday).each do |weekday| %>
-    <!-- Start day  -->
-    <% if event.start_day.to_s.downcase == weekday %>
+          <%#  iterate through all the weeks to see where the event falls  %>
+          <% %w(monday tuesday wednesday thursday friday saturday sunday).each do |weekday| %>
+              <%#  Start day  %>
+              <% if event.start_day.to_s.downcase == weekday %>
 
-    <!-- If it's only a user event -->
+                  <%#  If it's only a user event %>
+                  <td class="">
+                    <div class = "displayEvent ">
+                      <%= event.name+ " " %><br>
+                      <%= event.start_time.strftime("%I:%M%p ").to_s %>
+                      -
+                      <%= event.end_time.strftime( "%I:%M%p").to_s %><br>
+                      <%if event.user_id != current_user.id %>
+                          <div class = "bg-2">
+                            Event made by:
+                            <br><%=User.find_by_id(event.user_id).fname%>
+                          </div>
+                      <%else%>
+                          <div class = "bg">
+                            YOUR EVENT
+                          </div>
+                      <%end%>
+                    </div>
+                  </td>
+              <% else %>
+                  <td>
+              <% end %>  <%# End the check the whether end_day is equal start_day %>
+              </td>
 
-    <td class="">
-      <div class = "displayEvent ">
-        <%= event.name+ " " %><br>
-        <%= event.start_time.strftime("%I:%M%p ").to_s %>
-        -
-        <%= event.end_time.strftime( "%I:%M%p").to_s %><br>
-        <%if event.user_id != current_user.id%>
-        <div class = "bg-2">
-          Event made by:
-          <br><%=User.find_by_id(event.user_id).fname%>
-        </div>
-        <%else%>
-          <div class = "bg">
-            YOUR EVENT
-          </div>
-        <%end%>
-      </div>
-
-
-      </div>
-    </td>
-
-    </div>
-
-
-      <% else %>
-      <td>
-        <% end %>  <%# End the check the whether end_day is equal start_day %>
-      </td>
-
-      <% end %> <%# End the loop week days %>
-    </tr>
+          <% end %> <%# End the loop week days %>
+        </tr>
     <% end %> <%# End the loop events %>
-    <% end %> <%# End the loop users %>
+<% end %> <%# End the loop users %>
+</tbody>
 
-  </tbody>
-  <%= render "./partials/calendarFooter" %>
+<%# Footer portion of calendar %>
+<%= render "./partials/calendarFooter" %>

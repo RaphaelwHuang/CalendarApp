@@ -10,35 +10,33 @@ JA - Modified layout, and information, reconstrcted with partials
 %>
 
 <%# Header portion of calendar %>
-
 <%= render "./partials/calendarHeader" %>
+
 <%# Content of calendar. Iterates through all events  %>
 <tbody>
-  <% @events.each do |event| %>
-  <%@found = false%>
-  <% if check_user(event) %>
-  <tr>
-    <%# iterate through all the weeds to see where the event falls %>
-    <% %w(monday tuesday wednesday thursday friday saturday sunday).each do |weekday| %>
-    <td>
-  <!-- Start day  -->
-      <% if event.start_day.to_s.downcase == weekday %>
+<% @events.each do |event| %>
+    <% if check_user(event) || check_group(event) %>
+        <tr>
+          <%# iterate through all the weeds to see where the event falls %>
+          <% %w(monday tuesday wednesday thursday friday saturday sunday).each do |weekday| %>
+              <td>
 
+                <%# Start day %>
+                <% if event.start_day.to_s.downcase == weekday %>
+                    <div class = "displayEvent">
+                      <%= event.name %><br>
+                      <%= event.start_time.strftime("%I:%M%p ").to_s %>
+                      -
+                      <%= event.end_time.strftime(" %I:%M%p").to_s %><br>
+                    </div>
+                <% end %>
 
-      <div class = "displayEvent">
-      <%= event.name %><br>
-      <%= event.start_time.strftime("%I:%M%p ").to_s %>
-      -
-      <%= event.end_time.strftime(" %I:%M%p").to_s %><br>
-    </div>
+              </td>
           <% end %>
-
-
-    </td>
+        </tr>
     <% end %>
-  </tr>
-  <% end %>
-  <% end %>
+<% end %>
 </tbody>
 
+<%# Footer portion of calendar %>
 <%= render "./partials/calendarFooter" %>
