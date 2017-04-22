@@ -16,24 +16,50 @@ Authored by: RH
     <!-- Start day  -->
     <% if event.start_day.to_s.downcase == weekday %>
 
+
+    <!-- If it's only a user event -->
     <% if event.group_id != @group.id %>
-    <td class="bg-2"> <%= user.fname+ " " %> BUSY</td>
+    <td class="bg-2">
+      <div class = "displayEvent ">
+        <%= user.fname+ " " %> BUSY<br>
+        <%= event.start_time.strftime("%I:%M%p ").to_s %>
+        -
+        <%= event.end_time.strftime( "%I:%M%p").to_s %><br>
+      </div>
+    </td>
     <% else %>
-    <td><%= event.name %></td>
-    <% end %>
+    <!-- Or a group event -->
+    <td><div class = "displayEvent groupEvent"><%= event.name %><br>
+      <%= event.start_time.strftime("%I:%M%p ").to_s %>
+      -
+      <%= event.end_time.strftime( "%I:%M%p").to_s %><br></div></td>
+      <% end %>
+    </div>
 
     <!-- end day  -->
     <% elsif event.start_day.to_s.downcase != event.end_day.to_s.downcase %>
     <% if event.end_day.to_s.downcase == weekday %>
 
+    <!-- If it's only a user event -->
     <% if event.group_id != @group.id %>
-    <td class="bg-2"> <%= user.fname %></td>
-    <% else %>
-    <td><%= event.name %></td>
-    <% end %> <%# End the check the user.id %>
+    <td class="bg-2">
+      <div class = "displayEvent ">
+        <%= user.fname+ " " %> BUSY<br>
+        <%= event.start_time.strftime("%I:%M%p ").to_s %>
+        -
+        <%= event.end_time.strftime( "%I:%M%p").to_s %><br>
+      </div></td>
 
-    <% else %>
-    </td>
+      <!-- Or a group event -->
+      <% else %>
+      <td><div class = "displayEvent groupEvent"><%= event.name %><br>
+        <%= event.start_time.strftime("%I:%M%p ").to_s %>
+        -
+        <%= event.end_time.strftime( "%I:%M%p").to_s %><br></div></td>
+        <% end %> <%# End the check the user.id %>
+
+        <% else %>
+      </td>
       <% end %> <%# End the check the end_day %>
       <% else %>
       <td>

@@ -164,12 +164,17 @@ a.button, .signup, .login{
 
 /*for calendar events*/
 .displayEvent{
-  text-align: center;
+  text-align: center !important;
+}
+.displayEvent{
+  text-align: center !important;
 }
 
 .displayEvent:hover{
    font-weight: bold;
 }
+
+
 
 
 /* Error message */
