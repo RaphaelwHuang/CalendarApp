@@ -6,7 +6,8 @@ Author: SP
   <button data-toggle="collapse" data-target="#eventForm" class="btn-md">New meeting</button>
   <div id="eventForm" class="collapse">
     <br>
-    <% @@check = true %> <%# if it is adding group events, the check is true %>
+    <%# if it is adding group events, the group_id is current group.id %>
+    <% session[:group_id] = groupId %>
     <%= render partial:'events/form', locals: {event: Event.new} %>
   </div>
 </div>

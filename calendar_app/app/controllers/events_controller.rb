@@ -1,5 +1,5 @@
 # Author: RH
-#modified: JA
+#modified: JA, RH
 
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
@@ -32,19 +32,8 @@ class EventsController < ApplicationController
     @user = current_user
     @event.user_id = @user.id
 
-    @@check = true
-
-    if @@check
-      @groups = Group.all
-      @groups.each do |group|
-        group.users.each do |user|
-          if user.id == @event.user_id
-            @event.group_id = group.id
-          end
-        end
-      end
-      @@check = false
-    end
+    # Get the group id from the current group
+    @event.group_id = session[:group_id]
 
     respond_to do |format|
       if @event.save
