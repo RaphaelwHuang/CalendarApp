@@ -1,9 +1,23 @@
-
-
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CalendarApp</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div class="container-fluid" id="home">
+<%= render 'layouts/header' %>
 <div class = "center ">
-	<h1> Welcome to Hang Time</h1>
-	<h2>Log in or create an account to come hang out with us </h2>
+	<h1 id="welcome"> Welcome to Hang Time</h1>
+	<h2 id="hangout">Log in or create an account to come hang out with us </h2>
 	<%= button_to "Sign Up", new_user_registration_path, class: "btn-lg signup", method: :get %>
 
 	<%= button_to "Login", new_user_session_path, class: "btn-lg login" %>
 </div>
+ <%= render 'layouts/footer' %>
+</div>
+
+</body>
+</html>

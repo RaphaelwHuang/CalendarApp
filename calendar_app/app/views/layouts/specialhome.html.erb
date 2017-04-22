@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head class =>
+  <title>CalendarApp</title>
+  	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  	<%= csrf_meta_tags %>
+</head>
+<body id = "home">
+
+	<div id = "wrap">
+		<div id ="main">
+			<div class="container-fluid">
+				<div id="header">
+					<!-- Author: JA -->
+<header class="navbar navbar-fixed-top navbar-light">
+  <div class="container">
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+      <!-- Home is the home for signed_out users and a different
+      home for signed_in users. -->
+        <li class="special"><%= link_to "Home",  root_path, class: "special head"%></li>
+        <li class="special"><%= link_to "Sign Up", new_user_registration_path, class: "special head" %></li>
+        <li class="special"><%= link_to "Log in", new_user_session_path, class: "special head" %></li>
+      </ul>
+    </nav>
+  </div>
+  <script>
+  $(document).ready(function(){
+    $(".dropdown-toggle").dropdown();
+  });
+  </script>
+</header>
+
+				</div>
+				<div class = "center ">
+						<h1 id="welcome"> Welcome to Hang Time</h1>
+						<h2 id="hangout">Log in or create an account to come hang out with us </h2>
+						<%= button_to "Sign Up", new_user_registration_path, class: "btn-lg signup", method: :get %>
+
+						<%= button_to "Login", new_user_session_path, class: "btn-lg login" %>
+				</div>
+			</div>
+		</div>
+
+	<div class="container" id="footer">
+ 		<footer>
+  			<small id="leftside">
+    			<div class = "center special">By Bits-Please</div>
+  			</small>
+  			<nav id ="rightside">
+    			<ul>
+      				<li><%= link_to "About", about_path, class: "special foot"%></li>
+      				<li><%= link_to "Contact Us", contact_path, class: "special foot"%></li>
+      				<li><%= link_to "Help", help_path, class: "special foot" %></li>
+    			</ul>
+  			</nav>
+ 		</footer>
+ 		</div>
+ 	</div>
+	</div>
+	
+</body>
+</html>

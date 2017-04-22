@@ -1,4 +1,7 @@
 class StaticPagesController < ApplicationController
-  def home
+ 	layout "specialhome", only: [:home]
+ def home
+
   end
+
 end

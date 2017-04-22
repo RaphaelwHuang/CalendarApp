@@ -2,7 +2,68 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+html, body {
+	height: 100%;
+	background-size: 100%;
+}
 
+#wrap {
+  min-height: 100%;
+}
+
+#main {
+	overflow: auto;
+	padding-bottom: 0 !important;
+}
+
+.login:hover {
+	background-color: rgba(255,255,255,.25);
+	color: white !important;
+}
+
+.login {
+	color:black;
+	background-color: #C0C0C0;
+}
+
+.signup {
+	color:black;
+	background-color: #C0C0C0;
+}
+.signup:hover {
+	background-color: rgba(255,255,255,.25);
+	color: white !important;
+}
+#leftside {
+	float:left;
+}
+
+#rightside {
+	float:right;
+}
+#footer footer{
+  position: fixed;
+  border: 0 !important;
+  bottom:0;
+  width: 62%;
+} 
+.special {
+	color: white;
+}
+
+.foot {
+	color:white;
+}
+
+.foot:hover {
+	text-decoration: underline;
+	color:white;
+}
+
+.head:hover{
+	color: black;
+	text-decoration: underline;
+}
 .signup {
 
   margin: 10px;
@@ -11,3 +72,21 @@
 .homepage{
   margin-top: 150px;
 }
+
+#home {
+	background-image: url("sunset.jpg");
+	background-repeat: no-repeat; 
+	background-size: cover;
+	
+}
+
+#welcome {
+	color: white;
+	font-size: 40px;
+}
+
+#hangout {
+	color: white;
+	font-size: 24px;
+}
+
