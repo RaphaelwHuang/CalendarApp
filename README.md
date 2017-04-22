@@ -56,4 +56,6 @@ easier.
 * Created helpers for events, groups and personal
 * Created calendar on personal page
 * Created calendar on group page
-* Changed the database of the schedule
+* Implemented all things related to the event controller
+* Realized the function that all group members' events can be added to group calendar
+* Realized the function that all group meetings can be added to personal calendar
