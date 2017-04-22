@@ -45,6 +45,7 @@ easier.
 * Added paperclip functionality for profile photos
 * Added view profile page, configured routes
 * Added stying for forms
+* Added bio attribute to groups, reconfigured controller and views to accomodate these changes
 
 
 

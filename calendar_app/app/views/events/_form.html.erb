@@ -4,7 +4,7 @@ Changes:
       changed selection time for start/end day
   SP- Time select now in 15 minute intervals 
 %>
-<%= form_for(event) do |f| %>
+<%= bootstrap_form_for(event) do |f| %>
   <% if event.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
@@ -17,24 +17,25 @@ Changes:
     </div>
   <% end %>
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name, :maxlength => 23%>
+   
+    <%= f.text_field :name, label:"Event Name", :maxlength => 23%>
   </div>
   <div class="field">
-    <%= f.label :start_time %><br>
-    <%= f.time_select :start_time, {minute_step: 15} %>
+   
+    <%= f.time_select :start_time, {minute_step: 15}, label:"Start Time" %>
   </div>
   <div class="field">
-    <%= f.label :end_time %><br>
-    <%= f.time_select :end_time, {minute_step: 15} %>
+   
+    <%= f.time_select :end_time, {minute_step: 15}, label:"End Time" %>
   </div>
   <div class="field">
-    <%= f.label "Day" %><br>
+   
     <% days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'] %>
-      <%= f.select :start_day, ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']%>
+      <%= f.select :start_day, ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'], label: "Day" %>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit label: "Create Event", class: "btn btn-success"%>
   </div>
+  <small><em>* All fields are required</em></small>
 <% end %>
