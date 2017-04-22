@@ -84,9 +84,6 @@ ActiveRecord::Schema.define(version: 20170422195940) do
     t.integer  "failed_attempts",        default: 0,  null: false
     t.string   "unlock_token"
     t.datetime "locked_at"
-    t.string   "fname"
-    t.string   "lname"
-    t.integer  "calendar_id"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "avatar_file_name"
