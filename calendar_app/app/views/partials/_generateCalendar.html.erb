@@ -21,11 +21,8 @@ JA - Modified layout, and information, reconstrcted with partials
     <%# iterate through all the weeds to see where the event falls %>
     <% %w(monday tuesday wednesday thursday friday saturday sunday).each do |weekday| %>
     <td>
-
   <!-- Start day  -->
       <% if event.start_day.to_s.downcase == weekday %>
-
-
 
 
       <div class = "displayEvent">

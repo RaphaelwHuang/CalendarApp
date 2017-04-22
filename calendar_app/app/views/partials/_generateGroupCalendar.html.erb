@@ -24,11 +24,16 @@ Authored by: RH
         <%= event.start_time.strftime("%I:%M%p ").to_s %>
         -
         <%= event.end_time.strftime( "%I:%M%p").to_s %><br>
+        <%if event.user_id != current_user.id%>
         <div class = "bg-2">
           Event made by:
-
           <br><%=User.find_by_id(event.user_id).fname%>
         </div>
+        <%else%>
+          <div class = "bg">
+            YOUR EVENT
+          </div>
+        <%end%>
       </div>
 
 
