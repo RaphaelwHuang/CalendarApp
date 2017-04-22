@@ -86,7 +86,7 @@ class GroupsController < ApplicationController
     end
 
     # PATCH /groups/1/add.json
-    #JA: Added validation in case user id entered does not exist 
+    #JA: Added validation in case user id entered does not exist
     def add
       respond_to do |format|
         @user = User.find_by_id(params[:group][:id])
