@@ -1,5 +1,5 @@
 # Author: RH
-#modified: JA, RH
+#modified: JA
 
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
@@ -7,7 +7,7 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all    
+    @events = Event.all
   end
 
   # GET /events/1

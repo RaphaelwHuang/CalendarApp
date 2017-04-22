@@ -29,6 +29,11 @@ JA - Modified layout, and information, reconstrcted with partials
                       -
                       <%= event.end_time.strftime(" %I:%M%p").to_s %><br>
                     </div>
+                    <%if event.group_id > 0%>
+                    <div class = " displayEvent bg-3">
+                      GROUP EVENT
+                    </div>
+                    <%end%>
                 <% end %>
 
               </td>

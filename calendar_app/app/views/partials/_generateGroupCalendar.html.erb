@@ -28,6 +28,11 @@ Authored by: RH
                             Event made by:
                             <br><%=User.find_by_id(event.user_id).fname%>
                           </div>
+
+                      <%elsif event.group_id ==@group.id%>
+                      <div class = " bg-3">
+                        GROUP EVENT
+                      </div>
                       <%else%>
                           <div class = "bg">
                             YOUR EVENT
