@@ -25,36 +25,19 @@ JA - Modified layout, and information, reconstrcted with partials
 
   <!-- Start day  -->
       <% if event.start_day.to_s.downcase == weekday %>
-      <%@found = true%>
-      <% end %>
-      
-      <% if event.start_day.to_s.downcase != event.end_day.to_s.downcase %>
-      <% if event.end_day.to_s.downcase == weekday %>
+
+
+
+
       <div class = "displayEvent">
       <%= event.name %><br>
       <%= event.start_time.strftime("%I:%M%p ").to_s %>
       -
       <%= event.end_time.strftime(" %I:%M%p").to_s %><br>
     </div>
-      <%@found = false%>
-      <% end %>
-      <%if @found%>
-      <div class = "displayEvent">
-      <%= event.name %><br>
-      <%= event.start_time.strftime("%I:%M%p ").to_s %>
-      -
-      <%= event.end_time.strftime(" %I:%M%p").to_s %><br>
-    </div>
-      <%end%>
-      <% elsif @found%>
-      <div class = "displayEvent">
-      <%= event.name %><br>
-      <%= event.start_time.strftime("%I:%M%p ").to_s %>
-      -
-      <%= event.end_time.strftime( "%I:%M%p").to_s %><br>
-    </div>
-      <%@found = false%>
-      <% end %>
+          <% end %>
+
+
     </td>
     <% end %>
   </tr>

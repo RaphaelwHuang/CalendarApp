@@ -28,16 +28,11 @@
     <%= f.time_select :end_time %>
   </div>
   <div class="field">
-    <%= f.label :start_day %><br>
+    <%= f.label "Day" %><br>
     <% days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'] %>
-
       <%= f.select :start_day, ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']%>
+  </div>
 
-  </div>
-  <div class="field">
-    <%= f.label :end_day %><br>
-    <%= f.select :end_day, ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']%>
-  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
