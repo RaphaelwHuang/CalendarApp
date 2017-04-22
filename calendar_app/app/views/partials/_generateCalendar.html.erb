@@ -6,7 +6,7 @@ RH - Minor change the syntax
 JA - Changed/Modified current styling
 RH - Added function that the check the current user
 RH - Added group meetings to personal calendar
-JA - Modified layout, and information, reconstrcted with paritals
+JA - Modified layout, and information, reconstrcted with partials
 %>
 
 <%# Header portion of calendar %>
@@ -23,9 +23,11 @@ JA - Modified layout, and information, reconstrcted with paritals
     <% %w(monday tuesday wednesday thursday friday saturday sunday).each do |weekday| %>
     <td>
 
+  <!-- Start day  -->
       <% if event.start_day.to_s.downcase == weekday %>
       <%@found = true%>
       <% end %>
+      
       <% if event.start_day.to_s.downcase != event.end_day.to_s.downcase %>
       <% if event.end_day.to_s.downcase == weekday %>
       <div class = "displayEvent">

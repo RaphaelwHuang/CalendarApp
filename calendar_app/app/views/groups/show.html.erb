@@ -38,9 +38,13 @@
     <h3> Group Events </h3>
     <%= render './partials/addMeeting' %>
 
-    <h3> Users </h3>
+  <h3> Users </h3>
+  <!-- ONly let admins add a user -->
+    <%if @group.admins.include? current_user%>
     <%= render './partials/addUserToGroup', object: @group %>
+    <%end%>
     <br>
+
     <button id = "viewUsers"> View Users </button>
   </div>
 

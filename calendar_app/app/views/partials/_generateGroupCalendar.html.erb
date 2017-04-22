@@ -2,47 +2,48 @@
 Authored by: RH
 %>
 
-  <%# Header portion of calendar %>
-  <%= render "./partials/calendarHeader" %>
+<%# Header portion of calendar %>
+<%= render "./partials/calendarHeader" %>
 
-        <%# Content of calendar. Iterates through all events  %>
-        <tbody>
-        <% @group.users.each do |user| %>
-            <% user.events.each do |event| %>
-                <tr>
+<%# Content of calendar. Iterates through all events  %>
+<tbody>
+  <% @group.users.each do |user| %>
+  <% user.events.each do |event| %>
+  <tr>
 
-                   <!-- iterate through all the weeks to see where the event falls  -->
-                  <% %w(monday tuesday wednesday thursday friday saturday sunday).each do |weekday| %>
-                      <!-- Start day  -->
-                      <% if event.start_day.to_s.downcase == weekday %>
-                          <% if event.group_id != @group.id %>
-                              <td class="bg-2"> <%= user.fname+ " " %> BUSY
-                          <% else %>
-                              <td><%= event.name %>
-                          <% end %>
+    <!-- iterate through all the weeks to see where the event falls  -->
+    <% %w(monday tuesday wednesday thursday friday saturday sunday).each do |weekday| %>
+    <!-- Start day  -->
+    <% if event.start_day.to_s.downcase == weekday %>
 
-                            <!-- end day  -->
-                      <% elsif event.start_day.to_s.downcase != event.end_day.to_s.downcase %>
-                              <% if event.end_day.to_s.downcase == weekday %>
+    <% if event.group_id != @group.id %>
+    <td class="bg-2"> <%= user.fname+ " " %> BUSY</td>
+    <% else %>
+    <td><%= event.name %></td>
+    <% end %>
 
-                                  <% if event.group_id != @group.id %>
-                                      <td class="bg-2"> <%= user.fname %>
-                                  <% else %>
-                                      <td><%= event.name %>
-                                  <% end %> <%# End the check the user.id %>
+    <!-- end day  -->
+    <% elsif event.start_day.to_s.downcase != event.end_day.to_s.downcase %>
+    <% if event.end_day.to_s.downcase == weekday %>
 
-                              <% else %>
-                                  <td>
-                              <% end %> <%# End the check the end_day %>
-                          <% else %>
-                              <td>
-                        <% end %>  <%# End the check the whether end_day is equal start_day %>
-                          </td>
+    <% if event.group_id != @group.id %>
+    <td class="bg-2"> <%= user.fname %></td>
+    <% else %>
+    <td><%= event.name %></td>
+    <% end %> <%# End the check the user.id %>
 
-                  <% end %> <%# End the loop week days %>
-                </tr>
-            <% end %> <%# End the loop events %>
-        <% end %> <%# End the loop users %>
+    <% else %>
+    </td>
+      <% end %> <%# End the check the end_day %>
+      <% else %>
+      <td>
+        <% end %>  <%# End the check the whether end_day is equal start_day %>
+      </td>
 
-        </tbody>
-      <%= render "./partials/calendarFooter" %>
+      <% end %> <%# End the loop week days %>
+    </tr>
+    <% end %> <%# End the loop events %>
+    <% end %> <%# End the loop users %>
+
+  </tbody>
+  <%= render "./partials/calendarFooter" %>

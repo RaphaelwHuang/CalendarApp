@@ -7,14 +7,15 @@
  		<td><%= user.lname %></td>
  		<td><%= user.email %></td>
  		<td><%= group.admins.include? user %></td>
- 		<% if group.admins.include? current_user %>
-    <% if user.id != current_user.id %>
- 		<td><%= button_to 'Promote', promote_groups_path(user_id: user.id, id: group.id), method: :patch, class: "button" %></td>
-    <% elsif  user.id != current_user.id && group.admins.length != 1 %>
- 		<td><%= button_to 'Demote', demote_groups_path(user_id: user.id, id: group.id), method: :patch, class: "button" %></td>
-    <%end%>
-    <!-- Need to check size of group before remove, or if size of user goes to zero goes to zero, delete group -->
- 		<td><%= button_to 'Remove', remove_groups_path(user_id: user.id, id: group.id), method: :patch, class: "button" %></td>
- 		<% end %>
+ 		<% if group.admins.include? current_user %><!-- IF current_user an ADMIN -->
+
+
+     		<td><%= button_to 'Promote', promote_groups_path(user_id: user.id, id: group.id), method: :patch, class: "button" %></td>
+        <td><%= button_to 'Demote', demote_groups_path(user_id: user.id, id: group.id), method: :patch, class: "button" %></td>
+
+        <!-- Need to check size of group before remove, or if size of user goes to zero goes to zero, delete group -->
+     		<td><%= button_to 'Remove', remove_groups_path(user_id: user.id, id: group.id), method: :patch, class: "button" %></td>
+
+ 		<% end %> <!-- end-IF if current_user an ADMIN -->
  	</tr>
-<% end %>
+<% end %> <!-- end of user loop -->
