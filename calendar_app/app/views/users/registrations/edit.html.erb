@@ -2,92 +2,55 @@
 // 4/20 - Added extra fields to the user table
 -->
 
-<h2>Edit <%= current_user.fname + " " + current_user.lname + "\'s Profile" %></h2>
+<h1><u>Edit Your Profile</u></h1>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+<%= bootstrap_form_for(resource, layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-10", as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+    <%= f.email_field :email, label: "Email Address*", control_col: "col-sm-4" %>
+    <%= f.text_field :fname, label: "First Name*", control_col: "col-sm-3"%>
 
-  <div class="field">
-    <%= f.label "First Name" %><br />
-    <%= f.text_field :fname %>
-  </div>
+    <%= f.text_field :lname, label: "Last Name", control_col: "col-sm-3" %>
 
-  <div class="field">
-    <%= f.label "Last Name" %><br />
-    <%= f.text_field :lname %>
-  </div>
+    <%= f.text_field :nickname, label: "Nickname", control_col: "col-sm-3" %>
 
-  <div class="field">
-    <%= f.label "Nickname" %><br />
-    <%= f.text_field :nickname %>
-  </div>
+    <%= f.text_area :bio, label: "Biography" %>
 
-  <div class="field">
-    <%= f.label "Biography" %><br />
-    <%= f.text_field :bio %>
-  </div>
+    <%= f.text_field :school, control_col: "col-sm-4" %>
 
-  <div class="field">
-    <%= f.label "School" %><br />
-    <%= f.text_field :school %>
-  </div>
+    <%= f.form_group :grade, label: { text: "Year in School" } do %>
+  <%= f.radio_button :grade, "Freshman", label: "Freshman", inline: true %>
+  <%= f.radio_button :grade, "Sophomore", label: "Sophomore", inline: true %>
+  <%= f.radio_button :grade, "Junior", label: "Junior", inline: true %>
+  <%= f.radio_button :grade, "Senior", label: "Senior", inline: true %>
+  <%= f.radio_button :grade, "Graduated", label: "Graduated", inline: true %>
+  <%= f.radio_button :grade, "Other", label: "Other", inline: true %>
+<% end %>
 
-  <div class="field">
-    <%= f.label "Year in School" %><br />
-    <%= f.text_field :grade %>
-  </div>
+    <%= f.text_field :hometown, control_col: "col-sm-4" %>
 
-  <div class="field">
-    <%= f.label "Hometown" %><br />
-    <%= f.text_field :hometown %>
-  </div>
+    <%= f.text_field :job, control_col: "col-sm-4" %>
 
-  <div class="field">
-    <%= f.label "Job" %><br />
-    <%= f.text_field :job %>
-  </div>
+    <%= f.password_field :password, autocomplete: "off", help:"#{@minimum_password_length} characters minimum.  (Leave blank if you don't want to change)", control_col: "col-sm-4" %>
+  
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
-  </div>
-
-   <div class="field">
-    <%= f.file_field :avatar %>
-    <br>
+    <%= f.password_field :password_confirmation, autocomplete: "off", control_col: "col-sm-4" %>
  
+    <%= f.password_field :current_password, autocomplete: "off", control_col: "col-sm-4" %>
+    <%= f.file_field :avatar %>
     <% if @user.avatar? %>
       <%= image_tag @user.avatar.url(:thumb) %>
-    <% end %>
-  </div>
+    <% end %><br>
+    <div id="submit">
+    <div>
+    <%= f.submit "Update", label_col: "col-sm-5", class: "btn btn-success btn-lg" %>
+    </div><br><br>
 
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
 <% end %>
+<small style="text-align:left;"><em>* Fields marked with a * must not be left blank</em></small>
+
 
 <h3>Delete Account</h3>
 
-<p><%= button_to "Delete Account", registration_path(resource_name), data: { confirm: "Are you sure you want to delete your account? This action cannot be undone." }, method: :delete %></p>
+<p><%= button_to "Delete Account", registration_path(resource_name), class: "center btn btn-danger", data: { confirm: "Are you sure you want to delete your account? This action cannot be undone." }, method: :delete %></p>
+</div>

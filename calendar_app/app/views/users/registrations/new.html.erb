@@ -1,73 +1,38 @@
-<h2>Sign up</h2>
+<h1>Sign up</h1>
 
-<%= form_for(resource, as: resource_name, html: { multipart: true }, url: registration_path(resource_name)) do |f| %>
+<%= bootstrap_form_for(resource, layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-10", as: resource_name, html: { multipart: true }, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+    <%= f.email_field :email, label: "Email Address*", control_col: "col-sm-4" %>
+    <%= f.password_field :password, autocomplete: "off", label: "Password*", help: "(#{@minimum_password_length} characters minimum)", control_col: "col-sm-4" %>
+    <%= f.password_field :password_confirmation, autocomplete: "off", label: "Confirm Password*", control_col: "col-sm-4" %>
+    <%= f.text_field :fname, label: "First Name*", control_col: "col-sm-3" %>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+    <%= f.text_field :lname, label: "Last Name", control_col: "col-sm-3" %>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-  
-  <div class="field">
-    <%= f.label "First Name" %><br />
-    <%= f.text_field :fname %>
-  </div>
+    <%= f.text_field :nickname, label: "Nickname", control_col: "col-sm-3" %>
 
-  <div class="field">
-    <%= f.label "Last Name" %><br />
-    <%= f.text_field :lname %>
-  </div>
+    <%= f.text_area :bio, label: "Biography" %>
 
-  <div class="field">
-    <%= f.label "Nickname" %><br />
-    <%= f.text_field :nickname %>
-  </div>
+    <%= f.text_field :school, control_col: "col-sm-4" %>
 
-  <div class="field">
-    <%= f.label "Biography" %><br />
-    <%= f.text_field :bio %>
-  </div>
-
-  <div class="field">
-    <%= f.label "School" %><br />
-    <%= f.text_field :school %>
-  </div>
-
-  <div class="field">
-    <%= f.label "Year in School" %><br />
-    <%= f.text_field :grade %>
-  </div>
-
-  <div class="field">
-    <%= f.label "Hometown" %><br />
-    <%= f.text_field :hometown %>
-  </div>
-
-  <div class="field">
-    <%= f.label "Job" %><br />
-    <%= f.text_field :job %>
-  </div>
-
-  <div class="field">
-  <%= f.file_field :avatar %>
-  </div>
-
-  <div class="actions button">
-    <%= f.submit "Sign up" %>
-  </div>
+    <%= f.form_group :grade, label: { text: "Year in School" } do %>
+  <%= f.radio_button :grade, "Freshman", label: "Freshman", inline: true %>
+  <%= f.radio_button :grade, "Sophomore", label: "Sophomore", inline: true %>
+  <%= f.radio_button :grade, "Junior", label: "Junior", inline: true %>
+  <%= f.radio_button :grade, "Senior", label: "Senior", inline: true %>
+  <%= f.radio_button :grade, "Graduated", label: "Graduated", inline: true %>
+  <%= f.radio_button :grade, "Other", label: "Other", inline: true %>
 <% end %>
 
-<%= render "users/shared/links" %>
+    <%= f.text_field :hometown, control_col: "col-sm-4" %>
+
+    <%= f.text_field :job, control_col: "col-sm-4" %>
+
+  <%= f.file_field :avatar, label: "Profile Picture" %>
+    <div id="submit">
+    <%= f.submit "Sign up", class: "btn btn-success btn-lg" %>
+    </div>
+<% end %><br><br>
+<small>
+<em>*Fields denoted with a * indicate a required field</em></small>

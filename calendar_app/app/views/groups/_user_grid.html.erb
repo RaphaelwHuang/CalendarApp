@@ -8,11 +8,13 @@
  		<td><%= user.nickname.nil? ? "#{user.fname} #{user.lname}" : user.nickname %></td>
  		<td><%= user.email %></td>
  		<td><%= group.admins.include?(user) ? "Admin" : "Member" %></td>
- 		<% if group.admins.include? current_user %><!-- IF current_user an ADMIN -->
+ 		<% if group.admins.include?(current_user) %><!-- IF current_user an ADMIN -->
 
-
+ 			<% if !group.admins.include?(user) %>
      		<td><%= link_to 'Promote', promote_groups_path(user_id: user.id, id: group.id), method: :patch, class: "button-sm" %></td>
-        <td><%= link_to 'Demote', demote_groups_path(user_id: user.id, id: group.id), method: :patch, class: "button-sm" %></td>
+     		<% else %>
+        	<td><%= link_to 'Demote', demote_groups_path(user_id: user.id, id: group.id), method: :patch, class: "button-sm" %></td>
+        	<% end %>
 
         <!-- Need to check size of group before remove, or if size of user goes to zero goes to zero, delete group -->
      		<td><%= link_to 'Remove', remove_groups_path(user_id: user.id, id: group.id), method: :patch, class: "button-sm" %></td>

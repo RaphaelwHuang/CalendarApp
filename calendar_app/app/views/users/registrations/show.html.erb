@@ -35,10 +35,16 @@
    		<div><strong>Job: </strong><%= user.job %></div>
    		<% end %>
    	</div>
-   	<div>
+      <br><br>
+   	<span>
+      <% if user.id == current_user.id %>
    	<%= link_to "Edit Profile", edit_user_registration_path, :method => :patch, class: "button"%>
-   	</div>
+      <% end %>
+   	</span>
+      <%= link_to 'Back', :back, class: "button" %>
+
 </div>
+
 
 
 

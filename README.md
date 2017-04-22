@@ -43,6 +43,13 @@ easier.
 * Set devise settings
 * Created Static pages about and contact
 * Created button/skeleton for promote, demote, remove
+* Homepage styling
+* All things related to add in the group controller
+* Added attributes to User model
+* Added paperclip functionality for profile photos
+* Added view profile page, configured routes
+* Added stying for forms
+
 
 
 ##### Raphael Huang (@RH) - Calendar Man/Stylist

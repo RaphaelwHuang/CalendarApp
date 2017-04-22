@@ -28,6 +28,7 @@ a {
 
 }
 
+
 div {
   &.field, &.actions {
     margin-bottom: 10px;
@@ -36,6 +37,10 @@ div {
 
 #notice {
   color: green;
+}
+
+#submit {
+  text-align: center;
 }
 
 .field_with_errors {

@@ -1,47 +1,47 @@
  <script>
     $(document).ready(function(){
         $("p").hide();
-        $("#1").click(function(){
-            $("p:first").toggle();
+        $("#first").click(function(){
+            $("pfirst").toggle();
         });
-        $("#2").click(function(){
-            $("#p2").toggle();
+        $("second").click(function(){
+            $("#psecond").toggle();
         });
-        $("#3").click(function(){
-            $("#p3").toggle();
+        $("#third").click(function(){
+            $("#pthird").toggle();
         });
-        $("#4").click(function(){
-            $("#p4").toggle();
+        $("#fourth").click(function(){
+            $("#pfourth").toggle();
         });
-        $("#5").click(function(){
-            $("#p5").toggle();
+        $("#fifth").click(function(){
+            $("#pfifth").toggle();
         });
     });
 </script>
 
 <div class="container" >
-<h2 >Frequently Asked Questions</h2>
+<h1>Frequently Asked Questions</h1>
 
-<h4 id = "1">How can I sign up?</h4>
+<h3 id = "first">How can I sign up?</h3>
 
-<p>In order to use Hang Time, you need to sign up first. Click the sign up button, then enter the email address, password and your first name. These are the necessary informations. You can also enter the optional information like last name, nick name, school, job etc.</p>
+<p id="pfirst">In order to use Hang Time, you must sign up first. Click the sign up link either in the navigation bar at the top of the screen, or from the homepage, where you will be prompted to enter your account information.  The only required options are email address, first name, and password, but you can also enter additional information like last name, nick-name, school, job etc.</p>
 
-<h4 id = "2">How can I create a new event?</h4>
+<h3 id = "second">How do I add an event to my calendar?</h3>
 
-<p id = "p2">Event is one of the main features in Hang Time. You can create a new event by clicking the new event button. You need to enter all the informations. Make sure your event&#39;s start time is eariler than the end time.</p>
+<p id = "psecond">You can create a new event by clicking the new event button on the landing page after you log in.  All of the fields must be filled in for the event to be saved, and make sure your event's start time is eariler than the end time.</p>
 
-<h4 id = "3">What is a group?</h4>
+<h3 id = "third">What is a group?</h3>
 
-<p id= "p3">A group is formed by multiple users who want to share their schedule in order to find a meeting time. In the group calendar, you can see the schedule of all the group memebers. You can create a new meeting for group members in the same way as creating event.</p>
+<p id= "pthird">A group is formed by multiple users who want to share their schedule in order to find a meeting time. In the group calendar on the group's homepage, you can see the schedule of all the group members. You can create a new event for all group members the same way you create a personal event.</p>
 
-<h4 id = "4">How can I create a group?</h4>
+<h3 id = "fourth">How can I create a group?</h3>
 
-<p id="p4">You can create your own group by clicking the create group button that is under the group Navbar. As you have created a group, you can add new member to your group by providing their user id.</p>
+<p id="pfourth">You can create your own group by clicking the "Create Group" button on your homepage. Once you have created a group, you can add other people to the group by clicking the "Add user to group" button from the group's home page and inputting their user ID's.</p>
 
-<h4 id = "5">What is Admin of a group?</h4>
+<h3 id = "fifth">What is an admin of a group?</h3>
 
-<p id = "p5">An administrator is the user who can remove other users from the group. The user who created the group will automatically become administrator. An adminstrator can promote other users to administrator or demote them back to normal user. Each group must have at least one administrator.</p>
+<p id = "pfifth">An administrator is a user who has permission to manage the users of a group. An administrator can promote and demote other users to or from the admin role, and also remove users from the group.  The user who creates the group will automatically become administrator, and cannot be demoted from that role.</p>
 
-</div>>
+</div>
 
 
