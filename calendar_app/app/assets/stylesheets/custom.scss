@@ -162,5 +162,14 @@ a.button, .signup, .login{
   width: 250px;
 }
 
+/*for calendar events*/
+.displayEvent{
+  text-align: center;
+}
+
+.displayEvent:hover{
+   font-weight: bold;
+}
+
 
 /* Error message */

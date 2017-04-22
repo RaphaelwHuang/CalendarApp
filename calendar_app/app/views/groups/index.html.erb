@@ -1,24 +1,24 @@
 
-<!--Modified:
+<!--
       JA: Only displaying groups user is currently in,
               opposed to every single group
       JA: Cleaned up code, and made it simpler
     -->
-
+<div id = "groupsTable">
 <h1><%= current_user.fname %>'s Groups</h1>
 
 <table class = "table table-striped">
   <thead class="thead-inverse">
     <tr>
-      <th>#</th>
-      <th>Name(link to calendar on name?)</th>
+      <th>Group ID: #</th>
+      <th>Name</th>
       <th>Number of Users</th>
       <th colspan="3">Group options</th>
     </tr>
   </thead>
 
   <tbody>
-    <% @user_groups = user_groups %>
+
     <% @user_groups.each do |group| %>
             <tr>
               <td><%= group.id %></td>
@@ -32,3 +32,5 @@
 
 <br>
 <%= button_to 'Create New Group', new_group_path, method: "get", class: "button" %>
+
+</div>

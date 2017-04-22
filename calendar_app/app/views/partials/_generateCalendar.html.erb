@@ -1,76 +1,63 @@
 <%#
 Authored by: RH
 Changes:
-  SP - Completely refactored code. Created this partial file.
-  RH - Minor change the syntax
-  JA - Changed/Modified current styling
-  RH - Added function that the check the current user
-  RH - Added group meetings to personal calendar
+SP - Completely refactored code. Created this partial file.
+RH - Minor change the syntax
+JA - Changed/Modified current styling
+RH - Added function that the check the current user
+RH - Added group meetings to personal calendar
+JA - Modified layout, and information, reconstrcted with paritals
 %>
 
-  <%# Header portion of calendar %>
-  <div class="calendar">
-    <div class="container-fluid row text-center" style="background-color: #caebf2">
-      <div class="col-xs-12 col-sm-12 col-md-12">
-        <p class="text-center size-1">
-          Week <%= find_week %>
-        </p>
-      </div>
-      <div class="col-xs-12 col-sm-12 col-md-12">
-        <p class="text-center size-2">
-          <%= find_day %>
-          <br>
-        </p>
-      </div>
+<%# Header portion of calendar %>
+
+<%= render "./partials/calendarHeader" %>
+<%# Content of calendar. Iterates through all events  %>
+<tbody>
+  <% @events.each do |event| %>
+  <%@found = false%>
+  <% if check_user(event) || check_group(event) %>
+  <tr>
+
+    <%# iterate through all the weeds to see where the event falls %>
+    <% %w(monday tuesday wednesday thursday friday saturday sunday).each do |weekday| %>
+    <td>
+
+      <% if event.start_day.to_s.downcase == weekday %>
+      <%@found = true%>
+      <% end %>
+      <% if event.start_day.to_s.downcase != event.end_day.to_s.downcase %>
+      <% if event.end_day.to_s.downcase == weekday %>
+      <div class = "displayEvent">
+      <%= event.name %><br>
+      <%= event.start_time.strftime("%I:%M%p ").to_s %>
+      -
+      <%= event.end_time.strftime(" %I:%M%p").to_s %><br>
     </div>
-    <div class="row">
-      <table class="table table-hover table-bordered">
-        <thead>
-          <tr>
-            <% %w(Time Mon Tue Wed Thu Fri Sat Sun).each do |header_info|%>
-            <th><%= header_info %></th>
-            <% end %>
-
-          </tr>
-        </thead>
-
-        <%# Content of calendar. Iterates through all events  %>
-        <tbody>
-        <% @events.each do |event| %>
-            <%@found = false%>
-            <% if check_user(event) || check_group(event) %>
-                <tr>
-                  <th scope="row">
-                    <%= event.start_time.strftime("%H:%M").to_s %>
-                    -
-                    <%= event.end_time.strftime("%H:%M").to_s %>
-                  </th>
-                  <%# iterate through all the weeds to see where the event falls %>
-                  <% %w(monday tuesday wednesday thursday friday saturday sunday).each do |weekday| %>
-                      <td>
-                        <% if event.start_day.to_s.downcase == weekday %>
-                            <%@found = true%>
-                        <% end %>
-                        <% if event.start_day.to_s.downcase != event.end_day.to_s.downcase %>
-                            <% if event.end_day.to_s.downcase == weekday %>
-                                <%= event.name %>
-                                <%@found = false%>
-                            <% end %>
-                            <%if @found%>
-                                <%= event.name %>
-                            <%end%>
-                        <% else if @found%>
-                                <%= event.name %>
-                                <%@found = false%>
-                            <% end %>
-                        <% end %>
-                      </td>
-                  <% end %>
-                </tr>
-            <% end %>
-        <% end %>
-        </tbody>
-
-      </table>
+      <%@found = false%>
+      <% end %>
+      <%if @found%>
+      <div class = "displayEvent">
+      <%= event.name %><br>
+      <%= event.start_time.strftime("%I:%M%p ").to_s %>
+      -
+      <%= event.end_time.strftime(" %I:%M%p").to_s %><br>
     </div>
-  </div>
+      <%end%>
+      <% elsif @found%>
+      <div class = "displayEvent">
+      <%= event.name %><br>
+      <%= event.start_time.strftime("%I:%M%p ").to_s %>
+      -
+      <%= event.end_time.strftime( "%I:%M%p").to_s %><br>
+    </div>
+      <%@found = false%>
+      <% end %>
+    </td>
+    <% end %>
+  </tr>
+  <% end %>
+  <% end %>
+</tbody>
+
+<%= render "./partials/calendarFooter" %>

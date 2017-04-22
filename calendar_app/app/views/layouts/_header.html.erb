@@ -3,41 +3,42 @@
   <div class="container">
     <nav>
       <ul class="nav navbar-nav navbar-right">
-      <!-- Home is the home for signed_out users and a different
-      home for signed_in users. -->
+        <!-- Home is the home for signed_out users and a different
+        home for signed_in users. -->
         <li class='list'><%= link_to "Home",  root_path %></li>
         <!-- IF USER IS SIGNED IN -->
         <% if user_signed_in? %>
         <!-- Downdown for Group -->
-          <li class = "list drowndown">
-            <a class="dropdown-toggle" data-toggle="dropdown" >
+        <li class = "list drowndown">
+          <a class="dropdown-toggle" data-toggle="dropdown" >
             Groups <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
-              <li><%= link_to "View Groups",  groups_path %></li>
-              <li><%= link_to "Create Group",  new_group_path %></li>
+          </a>
+          <ul class="dropdown-menu">
+            <li><%= link_to "View Groups",  groups_path %></li>
+            <li><%= link_to "Create Group",  new_group_path %></li>
 
           </ul>
         </li>
-
+        <!-- Downdown for Profile -->
         <li class = " list drowndown">
-            <a class="dropdown-toggle" data-toggle="dropdown" >
-            <%= current_user.fname %><span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
-              <li><%= link_to "Profile", profile_path %></li>
-              <li><%= link_to "Log out", destroy_user_session_path %></li>
+          <a class="dropdown-toggle" data-toggle="dropdown" >
+            <%= current_user.fname %>(#<%=current_user.id%>)<span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><%= link_to "Profile", profile_path %></li>
+            <li><%= link_to "Log out", destroy_user_session_path %></li>
           </ul>
         </li>
-
+        <!-- IF USER IS NOT SIGNED IN -->
         <% else %>
-          <li><%= link_to "Sign Up", new_user_registration_path %></li>
-          <li><%= link_to "Log in", new_user_session_path %></li>
-
+        <li><%= link_to "Sign Up", new_user_registration_path %></li>
+        <li><%= link_to "Log in", new_user_session_path %></li>
         <% end %>
       </ul>
     </nav>
   </div>
+
+    <!-- FOR DROPDOWN NAVBAR -->
   <script>
   $(document).ready(function(){
     $(".dropdown-toggle").dropdown();

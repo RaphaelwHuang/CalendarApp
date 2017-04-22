@@ -8,6 +8,8 @@
 #     methods. Seriously cleaned up code.
 #   KS - Added add method
 #   SP - Methods deal with some unexpected conditions
+#   JA - modified index method to only return groups user in
+
 
 class GroupsController < ApplicationController
   before_action :set_group, only: [:show, :edit, :update, :destroy,\
@@ -20,8 +22,18 @@ class GroupsController < ApplicationController
 
   # GET /groups
   # GET /groups.json
+  #JA
   def index
     @groups = Group.all
+    @user_groups = []
+    @groups.each do |group|
+      group.users.each do |user|
+        if user.id == current_user.id
+          @user_groups.push(group)
+        end
+      end
+    end
+      @user_groups
   end
 
   # GET /groups/1
@@ -91,7 +103,7 @@ class GroupsController < ApplicationController
     respond_to do |format|
       @user.groups.delete(@group)
       # .any? because if the group is somehow full of NIL objects, then we should delete
-      if @group.users.any?  
+      if @group.users.any?
         format.html { redirect_to @group, notice: "#{@user.fname} was removed from #{@group.name}!" }
       else
         @group.destroy

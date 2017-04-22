@@ -1,0 +1,24 @@
+<div class="calendar">
+  <div class="container-fluid row text-center" style="background-color: #caebf2">
+    <div class="col-xs-12 col-sm-12 col-md-12">
+      <p class="text-center size-1">
+        Week <%= find_week %>
+      </p>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+      <p class="text-center size-2">
+        <%= find_day %>
+        <br>
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <table class="table table-hover table-bordered">
+
+      <thead>
+        <tr>
+          <% %w(Mon Tue Wed Thu Fri Sat Sun).each do |header_info|%>
+          <th><%= header_info %></th>
+          <% end %>
+        </tr>
+      </thead>
