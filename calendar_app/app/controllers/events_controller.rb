@@ -1,5 +1,4 @@
 # Author: RH
-#modified: JA
 
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
@@ -26,6 +25,7 @@ class EventsController < ApplicationController
 
   # POST /events
   # POST /events.json
+  # RH: Ability to distniguish user/group evetn
   def create
 
     @event  = Event.new(event_params)

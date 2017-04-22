@@ -1,7 +1,7 @@
 # Project 6
 ### Hang Time - Ruby on Rails Project
 Hang Time is a calendar app that wishes to make scheduling group meetings
-easier. 
+easier.
 ### Roles
 * Overall Project Manager: Jenn Alarcon
 * Coding Manager: Sunny Patel & Kenton Steiner
@@ -22,17 +22,13 @@ easier.
 
 
 ##### Jenn Alarcon (@JA) - Stylist
-* Installed bootstrap, and added basic styling
-* Made modifications to routes, controllers, and views
+* Installed bootstrap, and set up universal styling
+* Made modifications to routes, added to/modified group controller, and views
 * Created partials for adding event, creating/joining group
-* Login/Sign up buttons on home page
-* navigation bar and footer
-* Modified styling for collapse forms to be more readable
-* Implemented adding a user to a specific groups (collaborated with SP, KS)
+* Navigation bar, header and footer
 * Routing modifications (when user logs in)
-
-
-
+* groups home page and personal page layout
+* Displaying proper events on calendar, and distinguishing between events
 
 ##### Kenton Steiner (@KS) - Back-end
 * General schema modifications

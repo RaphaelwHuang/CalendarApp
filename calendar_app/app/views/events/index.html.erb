@@ -10,23 +10,35 @@
       <th>Start time</th>
       <th>End time</th>
       <th> Week Day</th>
+      <th> Group event? </th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @events.each do |event| %>
-      <% if check_user(event) %>
+      <% if check_user(event) || check_group(event) %>
       <tr>
         <td><%= event.name %></td>
         <td><%= event.start_time.strftime("%H:%M").to_s %></td>
         <td><%= event.end_time.strftime("%H:%M").to_s %></td>
         <td><%= event.start_day.to_s.titleize %></td>
-
+        <td>  <% if event.group_id >0 %>
+          ✓  <%Group.find_by_id(event.group_id).name%>
+          <%end%></td>
         <td>
+
+
           <%= link_to 'Show', event %>
           <%= link_to 'Edit', edit_event_path(event) %>
-          <%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% if check_group(event) %>
+              <%group = Group.find_by_id event.group_id  %>
+              <% if group.admins.include? current_user %>
+               <%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %>
+               <%end%>
+           <%else%>
+           <%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %>
+           <%end%>
         </td>
       </tr>
       <%end%>
