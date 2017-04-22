@@ -3,18 +3,19 @@
 -->
 <% group.users.each do |user| %>
  	<tr>
- 		<td><%= user.fname %></td>
- 		<td><%= user.lname %></td>
+ 		<td><%= link_to 'View Profile', profile_path(id: user.id), class: "button-sm" %></td>
+ 		<td><%= link_to "#{user.fname} #{user.lname}", profile_path(id: user.id) %></td>
+ 		<td><%= user.nickname.nil? ? "#{user.fname} #{user.lname}" : user.nickname %></td>
  		<td><%= user.email %></td>
- 		<td><%= group.admins.include? user %></td>
+ 		<td><%= group.admins.include?(user) ? "Admin" : "Member" %></td>
  		<% if group.admins.include? current_user %><!-- IF current_user an ADMIN -->
 
 
-     		<td><%= button_to 'Promote', promote_groups_path(user_id: user.id, id: group.id), method: :patch, class: "button" %></td>
-        <td><%= button_to 'Demote', demote_groups_path(user_id: user.id, id: group.id), method: :patch, class: "button" %></td>
+     		<td><%= link_to 'Promote', promote_groups_path(user_id: user.id, id: group.id), method: :patch, class: "button-sm" %></td>
+        <td><%= link_to 'Demote', demote_groups_path(user_id: user.id, id: group.id), method: :patch, class: "button-sm" %></td>
 
         <!-- Need to check size of group before remove, or if size of user goes to zero goes to zero, delete group -->
-     		<td><%= button_to 'Remove', remove_groups_path(user_id: user.id, id: group.id), method: :patch, class: "button" %></td>
+     		<td><%= link_to 'Remove', remove_groups_path(user_id: user.id, id: group.id), method: :patch, class: "button-sm" %></td>
 
  		<% end %> <!-- end-IF if current_user an ADMIN -->
  	</tr>

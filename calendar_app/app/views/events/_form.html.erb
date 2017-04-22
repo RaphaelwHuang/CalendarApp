@@ -1,7 +1,9 @@
-<!-- Modified:
-          JA: added maxLength to event name
-                changed selection time for start/end day
--->
+<%#
+Changes:
+  JA- added maxLength to event name
+      changed selection time for start/end day
+  SP- Time select now in 15 minute intervals 
+%>
 <%= form_for(event) do |f| %>
   <% if event.errors.any? %>
     <div id="error_explanation">
@@ -21,11 +23,11 @@
   </div>
   <div class="field">
     <%= f.label :start_time %><br>
-    <%= f.time_select :start_time %>
+    <%= f.time_select :start_time, {minute_step: 15} %>
   </div>
   <div class="field">
     <%= f.label :end_time %><br>
-    <%= f.time_select :end_time %>
+    <%= f.time_select :end_time, {minute_step: 15} %>
   </div>
   <div class="field">
     <%= f.label "Day" %><br>

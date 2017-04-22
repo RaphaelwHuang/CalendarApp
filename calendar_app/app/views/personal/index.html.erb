@@ -7,8 +7,7 @@ Changes:
 %>
 <div class="personal">
   <h1>
-    Welcome
-    <%= "#{current_user.fname}!" if user_signed_in? %>
+    Welcome <%= "#{current_user.fname}!" %>
   </h1>
 
   <div class ="left">
@@ -17,11 +16,11 @@ Changes:
     <br>
     <%= render './partials/viewEvents' %>
     <h3> Groups </h3>
-    <button><%= link_to "View Groups",  groups_path %></button>
+    <%= link_to "View Groups",  groups_path, class: "button" %>
 
     <br>
     <br>
-    <button><%= link_to "Create Group",  new_group_path %></button>
+    <%= render './partials/createGroup'%>
 
   </div>
   <div class="right">

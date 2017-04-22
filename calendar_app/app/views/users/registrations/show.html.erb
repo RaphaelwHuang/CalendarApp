@@ -1,42 +1,42 @@
 <div class='container'>
 	<div class='jumbotron center'>
-		<h2><%= current_user.fname + '\'s Profile' %></h2>
-      <% if current_user.nickname? %>
-         <i>"<%= current_user.nickname %>"</i>
+		<h2><%= user.fname + '\'s Profile' %></h2>
+      <% if user.nickname? %>
+         <i>"<%= user.nickname %>"</i>
       <% end %>
 	</div>
    </div>
 <div class='container'>
 	<div>
 		<div>
-		<% if current_user.avatar? %>
-      		<%= image_tag current_user.avatar.url(:medium) %>
+		<% if user.avatar? %>
+      		<%= image_tag user.avatar.url(:medium) %>
    		<% end %>
    		<br><br>
    		
    		</div>
-   		<div><strong>Name: </strong><%= current_user.fname + ' ' + current_user.lname %></div>
-   		<% if current_user.bio? %>
-   		<div><strong>About <%= current_user.fname %>:</strong><br><%= current_user.bio %></div>
+   		<div><strong>Name: </strong><%= user.fname + ' ' + user.lname %></div>
+   		<% if user.bio? %>
+   		<div><strong>About <%= user.fname %>:</strong><br><%= user.bio %></div>
    		<% end %>
-   		<% if current_user.hometown? %>
-   		<div><strong>Hometown: </strong><%= current_user.hometown %></div>
+   		<% if user.hometown? %>
+   		<div><strong>Hometown: </strong><%= user.hometown %></div>
    		<% end %>
-   		<% if current_user.school? %>
-   		<div><strong>School: </strong><%= current_user.school %></div>
+   		<% if user.school? %>
+   		<div><strong>School: </strong><%= user.school %></div>
    		<% end %>
-   		<% if current_user.major? %>
-   		<div><strong>Major: </strong><%= current_user.major %></div>
+   		<% if user.major? %>
+   		<div><strong>Major: </strong><%= user.major %></div>
    		<% end %>
-   		<% if current_user.grade? %>
-   		<div><strong>Grade: </strong><%= current_user.grade %></div>
+   		<% if user.grade? %>
+   		<div><strong>Grade: </strong><%= user.grade %></div>
    		<% end %>
-   		<% if current_user.job? %>
-   		<div><strong>Job: </strong><%= current_user.job %></div>
+   		<% if user.job? %>
+   		<div><strong>Job: </strong><%= user.job %></div>
    		<% end %>
    	</div>
    	<div>
-   	<%= button_to "Edit Profile", edit_user_registration_path, :method => :patch, class: "button btn"%>
+   	<%= link_to "Edit Profile", edit_user_registration_path, :method => :patch, class: "button"%>
    	</div>
 </div>
 
