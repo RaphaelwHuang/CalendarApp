@@ -16,9 +16,8 @@ JA - Modified layout, and information, reconstrcted with partials
 <tbody>
   <% @events.each do |event| %>
   <%@found = false%>
-  <% if check_user(event) || check_group(event) %>
+  <% if check_user(event) %>
   <tr>
-
     <%# iterate through all the weeds to see where the event falls %>
     <% %w(monday tuesday wednesday thursday friday saturday sunday).each do |weekday| %>
     <td>

@@ -17,22 +17,24 @@ Authored by: RH
     <% if event.start_day.to_s.downcase == weekday %>
 
     <!-- If it's only a user event -->
-    <% if event.group_id != @group.id %>
-    <td class="bg-2">
+
+    <td class="">
       <div class = "displayEvent ">
-        <%= user.fname+ " " %> BUSY<br>
+        <%= event.name+ " " %><br>
         <%= event.start_time.strftime("%I:%M%p ").to_s %>
         -
         <%= event.end_time.strftime( "%I:%M%p").to_s %><br>
+        <div class = "bg-2">
+          Event made by:
+
+          <br><%=User.find_by_id(event.user_id).fname%>
+        </div>
+      </div>
+
+
       </div>
     </td>
-    <% else %>
-    <!-- Or a group event -->
-    <td><div class = "displayEvent groupEvent"><%= event.name %><br>
-      <%= event.start_time.strftime("%I:%M%p ").to_s %>
-    -
-      <%= event.end_time.strftime( "%I:%M%p").to_s %><br></div></td>
-      <% end %>
+
     </div>
 
 

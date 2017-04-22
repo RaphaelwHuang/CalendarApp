@@ -12,7 +12,6 @@ class Event < ActiveRecord::Base
   validates :start_day, format: { with: /(mon|tues|wednes|thurs|fri|satur|sun)(day)/i,
                                      message: "%{value} is not a valid week day" }
 
-
   validate :check_time
 
   def check_time
