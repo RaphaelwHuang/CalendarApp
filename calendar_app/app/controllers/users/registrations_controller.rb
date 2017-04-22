@@ -28,7 +28,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def profile
-    render :show
+    params[:id].nil? ? @user = current_user : @user = User.find(params[:id])
+    render :show, locals: {user: @user}
   end
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign
@@ -60,4 +61,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def after_inactive_sign_up_path_for(resource)
     super(resource)
   end
+
+  private
 end

@@ -24,13 +24,13 @@
               <td><%= group.id %></td>
               <td><%= group.name %></td>
               <td><%= group.users.distinct.count %></td>
-              <td><%= button_to "Show", group, method: "get", class: "button" %></td>
+              <td><%= link_to "Show", group, method: "get", class: "button-sm" %></td>
             </tr>
       <% end %>
   </tbody>
 </table>
 
 <br>
-<%= button_to 'Create New Group', new_group_path, method: "get", class: "button" %>
+<%= render './partials/createGroup'%>
 
 </div>

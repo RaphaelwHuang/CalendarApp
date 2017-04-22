@@ -120,7 +120,10 @@ a.button, .signup, .login{
   text-decoration: none;
   @extend button;
 }
-
+a.button-sm {
+  @extend a.button;
+  @extend .btn-sm;
+}
 
 /* For calendar */
 
