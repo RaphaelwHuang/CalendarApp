@@ -1,10 +1,12 @@
 <%#
 Author: SP
+      RH - Added check condition
 %>
 <div class = addEvent>
   <button data-toggle="collapse" data-target="#eventForm" class="btn-md">New event</button>
   <div id="eventForm" class="collapse">
     <br>
-  	<%= render partial:'events/form', locals: {event: Event.new} %>
+    <% @@check = false %> <%# if it is adding personal events, the check is false %>
+    <%= render partial:'events/form', locals: {event: Event.new} %>
   </div>
 </div>

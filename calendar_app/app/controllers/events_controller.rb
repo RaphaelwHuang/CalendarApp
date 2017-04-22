@@ -1,3 +1,5 @@
+# Author: RH
+
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
@@ -27,7 +29,21 @@ class EventsController < ApplicationController
     @event  = Event.new(event_params)
     @user = current_user
     @event.user_id = @user.id
-    @event.save!
+
+    @@check = true
+
+    if @@check
+      @groups = Group.all
+      @groups.each do |group|
+        group.users.each do |user|
+          if user.id == @event.user_id
+            @event.group_id = group.id
+          end
+        end
+      end
+      @@check = false
+    end
+
     respond_to do |format|
       if @event.save
         format.html { redirect_to @event, notice: 'Event was successfully created.' }
@@ -38,6 +54,8 @@ class EventsController < ApplicationController
       end
     end
   end
+
+
 
   # PATCH/PUT /events/1
   # PATCH/PUT /events/1.json

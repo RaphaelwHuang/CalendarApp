@@ -1,6 +1,7 @@
 # Author: RH
 # Changes:
 #   RH - Added check current user support
+#   RH - Added check the group id
 require 'date'
 
 module EventsHelper
@@ -24,6 +25,17 @@ module EventsHelper
   def check_user(event)
     @user = current_user
     event.user_id == @user.id
+  end
+
+  def check_group(event)
+    check = false
+    @comprises = Comprise.all
+    @comprises.each do |comprise|
+        if comprise.user_id == @user.id && comprise.group_id == event.group_id
+            check = true
+          end
+      end
+    check
   end
 
 end

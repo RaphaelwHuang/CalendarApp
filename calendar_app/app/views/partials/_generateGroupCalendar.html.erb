@@ -43,23 +43,27 @@ Authored by: RH
                   <%# iterate through all the weeds to see where the event falls %>
                   <% %w(monday tuesday wednesday thursday friday saturday sunday).each do |weekday| %>
                       <% if event.start_day.to_s.downcase == weekday %>
-                          <% if user.__id__ != 0 %>
-                              <td class="bg-2">BUSY
+                          <% if event.group_id != @group.id %>
+                              <td class="bg-2"> <%= user.fname %>
+                          <% else %>
+                              <td><%= event.name %>
                           <% end %>
 
                       <% else if event.start_day.to_s.downcase != event.end_day.to_s.downcase %>
                               <% if event.end_day.to_s.downcase == weekday %>
 
-                                  <% if user.__id__ != 0 %>
-                                      <td class="bg-2">BUSY
+                                  <% if event.group_id != @group.id %>
+                                      <td class="bg-2"> <%= user.fname %>
+                                  <% else %>
+                                      <td><%= event.name %>
                                   <% end %> <%# End the check the user.id %>
                               <% else %>
                                   <td>
                               <% end %> <%# End the check the end_day %>
-                      <% else %>
-                          <td>
-                      <% end %>  <%# End the check the whether end_day is equal start_day %>
-                      </td>
+                          <% else %>
+                              <td>
+                          <% end %>  <%# End the check the whether end_day is equal start_day %>
+                          </td>
                       <% end %>
                   <% end %> <%# End the loop week days %>
                 </tr>
