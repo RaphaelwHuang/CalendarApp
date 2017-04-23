@@ -2,6 +2,10 @@
 ### Hang Time - Ruby on Rails Project
 Hang Time is a calendar app that wishes to make scheduling group meetings
 easier.
+
+### Program Execution
+First, using the cd command to the file: calendar_app. Then you need to install the ruby gem by using "bundle install". The third step is to migrate the database by using rake, do "bundle exec rake db:migrate". You will see a message that said "=> Rails 4.2.8 application starting in development on http://localhost:3000". Open any web browser and enter http://localhost:3000. You will see our web app, the Hang Time! You can use Ctrl-C to shutdown server.
+
 ### Roles
 * Overall Project Manager: Jenn Alarcon
 * Coding Manager: Sunny Patel & Kenton Steiner
