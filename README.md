@@ -6,6 +6,9 @@ easier.
 ### Program Execution
 First, using the cd command to the file: calendar_app. Then you need to install the ruby gem by using "bundle install". The third step is to migrate the database by using rake, do "bundle exec rake db:migrate". You will see a message that said "=> Rails 4.2.8 application starting in development on http://localhost:3000". Open any web browser and enter http://localhost:3000. You will see our web app, the Hang Time! You can use Ctrl-C to shutdown server.
 
+### Test Plan
+The final project is biggest project we have worked on so far. The size of code posts a great challenge on testing. Most of the testing we did is system test. We will go to our web site and test every feature to make sure everything runs as expected. To test our website, you should first sign up. Then, you can create as many new events as you want. You can see the events on calendar on the home page. If you wish to see the events as a list, click view event to go to event page. You can destory some random events to test the destory feature or update some events. To test the group feature, creating a group by clicking the create group button. You can add new group meetings and see them on your calendar. You can create additional users and add them to your group. You can promote those users or remove them.
+
 ### Roles
 * Overall Project Manager: Jenn Alarcon
 * Coding Manager: Sunny Patel & Kenton Steiner
