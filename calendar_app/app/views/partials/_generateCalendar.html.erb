@@ -1,5 +1,5 @@
 <%#
-Authored by: RH
+Authored by: RH, JA
 Changes:
 SP - Completely refactored code. Created this partial file.
 RH - Minor change the syntax
@@ -7,41 +7,30 @@ JA - Changed/Modified current styling
 RH - Added function that the check the current user
 RH - Added group meetings to personal calendar
 JA - Modified layout, and information, reconstrcted with partials
+JA - Rewrote entire thing to use simple_cal gem
 %>
 
-<%# Header portion of calendar %>
-<%= render "./partials/calendarHeader" %>
-
 <%# Content of calendar. Iterates through all events  %>
-<tbody>
-<% @events.each do |event| %>
-    <% if check_user(event) || check_group(event) %>
-        <tr>
-          <%# iterate through all the weeds to see where the event falls %>
-          <% %w(monday tuesday wednesday thursday friday saturday sunday).each do |weekday| %>
-              <td>
 
-                <%# Start day %>
-                <% if event.start_day.to_s.downcase == weekday %>
-                    <div class = "displayEvent">
-                      <%= event.name %><br>
-                      <%= event.start_time.strftime("%I:%M%p ").to_s %>
-                      -
-                      <%= event.end_time.strftime(" %I:%M%p").to_s %><br>
-                    </div>
-                    <%if event.group_id > 0%>
-                    <div class = " displayEvent bg-3">
-                      GROUP EVENT
-                    </div>
-                    <%end%>
-                <% end %>
+<%= week_calendar do |date| %>
+  <% @events.each do |event| %>
+  <%if check_user(event) || check_group(event)%>
+    <% if date.strftime("%m/%d/%Y") == event.starting_time.strftime("%m/%d/%Y")%>
+              <div class = "event">
+              <div class = "displayEvent">
+                <strong><%= event.name %><br></strong>
+                <%= event.starting_time.strftime("%I:%M%p ").to_s %>
+                -
+                <%= event.ending_time.strftime("%I:%M%p").to_s %><br>
+              </div>
 
-              </td>
-          <% end %>
-        </tr>
+              <%if event.group_id > 0%>
+                  <div class = "bg-3">
+                    <%= Group.find(event.group_id).name%>
+                  </div>
+              <% end %>
+            </div>
     <% end %>
+      <% end %>
+    <%end%>
 <% end %>
-</tbody>
-
-<%# Footer portion of calendar %>
-<%= render "./partials/calendarFooter" %>

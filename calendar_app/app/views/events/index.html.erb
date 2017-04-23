@@ -20,9 +20,9 @@
       <% if check_user(event) || check_group(event) %>
       <tr>
         <td><%= event.name %></td>
-        <td><%= event.start_time.strftime("%H:%M").to_s %></td>
-        <td><%= event.end_time.strftime("%H:%M").to_s %></td>
-        <td><%= event.start_day.to_s.titleize %></td>
+        <td><%= event.starting_time %></td>
+        <td><%= event.ending_time %></td>
+        <td></td>
         <td>  <% if event.group_id >0 %>
           ✓  <%=Group.find_by_id(event.group_id).name%>
           <%end%></td>

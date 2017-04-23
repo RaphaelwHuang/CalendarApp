@@ -1,28 +1,23 @@
 <%#
-Authored by: RH
+Authored by: JA
 %>
 
-<%# Header portion of calendar %>
-<%= render "./partials/calendarHeader" %>
+<%= week_calendar do |date| %>
 
-<%# Content of calendar. Iterates through all events  %>
-<tbody>
 <% @group.users.each do |user| %>
     <% user.events.each do |event| %>
-        <tr>
+
 
           <%#  iterate through all the weeks to see where the event falls  %>
-          <% %w(monday tuesday wednesday thursday friday saturday sunday).each do |weekday| %>
-              <%#  Start day  %>
-              <% if event.start_day.to_s.downcase == weekday %>
+            <% if date.strftime("%m/%d/%Y") == event.starting_time.strftime("%m/%d/%Y")%>
 
                   <%#  If it's only a user event %>
-                  <td class="">
+                    <div class = "event">
                     <div class = "displayEvent ">
-                      <%= event.name+ " " %><br>
-                      <%= event.start_time.strftime("%I:%M%p ").to_s %>
+                      <Strong><%= event.name+ " " %><br></Strong>
+                      <%= event.starting_time.strftime("%I:%M%p ").to_s %>
                       -
-                      <%= event.end_time.strftime( "%I:%M%p").to_s %><br>
+                      <%= event.ending_time.strftime( "%I:%M%p").to_s %><br>
                       <%if event.group_id > 0%>
                       <div class = " bg-3">
                         GROUP EVENT
@@ -40,17 +35,11 @@ Authored by: RH
                           </div>
                       <%end%>
                     </div>
-                  </td>
-              <% else %>
-                  <td>
-              <% end %>  <%# End the check the whether end_day is equal start_day %>
-              </td>
+                  </div>
+
+              <% end %>  <%# End the check the whether end_day is equal
 
           <% end %> <%# End the loop week days %>
-        </tr>
+<% end %>
     <% end %> <%# End the loop events %>
 <% end %> <%# End the loop users %>
-</tbody>
-
-<%# Footer portion of calendar %>
-<%= render "./partials/calendarFooter" %>

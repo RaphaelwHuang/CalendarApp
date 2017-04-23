@@ -27,7 +27,6 @@ class EventsController < ApplicationController
   # POST /events.json
   # RH: Ability to distniguish user/group evetn
   def create
-
     @event  = Event.new(event_params)
     @user = current_user
     @event.user_id = @user.id
@@ -80,6 +79,6 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:name, :start_time, :end_time, :start_day, :end_day)
+      params.require(:event).permit(:name, :starting_time, :ending_time)
     end
 end

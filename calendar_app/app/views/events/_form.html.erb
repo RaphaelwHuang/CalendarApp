@@ -2,7 +2,7 @@
 Changes:
   JA- added maxLength to event name
       changed selection time for start/end day
-  SP- Time select now in 15 minute intervals 
+  SP- Time select now in 15 minute intervals
 %>
 <%= bootstrap_form_for(event) do |f| %>
   <% if event.errors.any? %>
@@ -17,22 +17,19 @@ Changes:
     </div>
   <% end %>
   <div class="field">
-   
     <%= f.text_field :name, label:"Event Name", :maxlength => 23%>
   </div>
+
   <div class="field">
-   
-    <%= f.time_select :start_time, {minute_step: 15}, label:"Start Time" %>
-  </div>
-  <div class="field">
-   
-    <%= f.time_select :end_time, {minute_step: 15}, label:"End Time" %>
-  </div>
-  <div class="field">
-   
-    <% days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'] %>
-      <%= f.select :start_day, ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'], label: "Day" %>
-  </div>
+  <%= f.label :starting_time %><br>
+  <%= f.datetime_select :starting_time %>
+</div>
+
+<div class="field">
+  <%= f.label :ending_time %><br>
+  <%= f.datetime_select :ending_time %>
+</div>
+
 
   <div class="actions">
     <%= f.submit label: "Create Event", class: "btn btn-success"%>
