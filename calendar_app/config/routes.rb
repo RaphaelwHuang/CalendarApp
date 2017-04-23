@@ -30,8 +30,6 @@ Rails.application.routes.draw do
     patch :edit, to:'users/registrations#edit'
   end
 
-  resources :administrates
-  resources :comprises
   resources :groups do
     collection do
       patch :promote
