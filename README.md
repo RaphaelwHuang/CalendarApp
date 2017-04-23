@@ -3,6 +3,12 @@
 Hang Time is a calendar app that wishes to make scheduling group meetings
 easier.
 
+#####Major Functionality:
+* Users can create events which are added to a personal calendar
+* Users can join Groups
+  * Group members can view eachothers events
+  * Group members can view eachothers profiles
+
 ### Program Execution
 First, using the cd command to the file: calendar_app. Then you need to install the ruby gem by using "bundle install". The third step is to migrate the database by using rake, do "bundle exec rake db:migrate". You will see a message that said "=> Rails 4.2.8 application starting in development on http://localhost:3000". Open any web browser and enter http://localhost:3000. You will see our web app, the Hang Time! You can use Ctrl-C to shutdown server.
 
@@ -21,8 +27,13 @@ First, using the cd command to the file: calendar_app. Then you need to install 
 * Implemented Devise with @KS
 * Implemented all things related to devise (routes, controllers, model, views)
 * Collapsible forms
-* All things related to promote, demote, remove
-* Refractored Code
+* Implemented Group Controller with @KS
+* Refracted code. Major revisions include
+  * Initial Calendar commit
+  * Controller code
+  * Styling so that it utilized more Bootstrap
+  * Buttons to work in Firefox
+* Active comms to provide team with bug-support
 
 
 ##### Jenn Alarcon (@JA) - Stylist
@@ -33,8 +44,9 @@ First, using the cd command to the file: calendar_app. Then you need to install 
 * Routing modifications (when user logs in)
 * groups home page and personal page layout
 * Displaying proper events on calendar, and distinguishing between events
+* Active comms on Slack
 
-##### Kenton Steiner (@KS) - Back-end
+##### Kenton Steiner (@KS) - Back-end/Profile
 * General schema modifications
 * Styling and editing for the pages in views for groups, users
 * Editing the navigation bar in the header
@@ -44,17 +56,17 @@ First, using the cd command to the file: calendar_app. Then you need to install 
 * Created Static pages about and contact
 * Created button/skeleton for promote, demote, remove
 * Homepage styling
-* All things related to add in the group controller
+* Implemented Group Controller with @SP
 * Added attributes to User model
 * Added paperclip functionality for profile photos
 * Added view profile page, configured routes
 * Added stying for forms
 * Added bio attribute to groups, reconfigured controller and views to accomodate these changes
-* Fixed styling for profile
+* Active comms on Slack
 
 
 
-##### Raphael Huang (@RH) - Calendar Man/Stylist
+##### Raphael Huang (@RH) - Calendar/Stylist
 * Added basic styling for events, calendar
 * Made modifications to routes, model and views
 * Modified controller methods for personal
@@ -64,6 +76,7 @@ First, using the cd command to the file: calendar_app. Then you need to install 
 * Implemented all things related to the event controller
 * Realized the function that all group members' events can be added to group calendar
 * Realized the function that all group meetings can be added to personal calendar
+* Active comms on Slack
 
 ##### Tony Su (@TS)
 * Create Static page help
@@ -71,4 +84,12 @@ First, using the cd command to the file: calendar_app. Then you need to install 
 * Create function to check if the first name entered by user is valid
 * Create function that only allow logged in user to access the web pages.
 * Create function that check if there is time conflict among user's events.
-* Homepage styling
+
+
+##### Testing
+Testing was done without unit tests. Because we had so few pages, the basic test
+was to go to each page and make sure it was working as intended. The calendars were
+tested by creating various events and seeing if it worked as expected
+
+##### Bugs
+We couldn't get the calendar to display from 0:00-24:00 and to show each events organized. I (SP) believe this would've been easier to do if we started over and instead started with a calendar that was empty, and had users fill in the calendar that way. However, we decided to stick with this version because of time constraints.
