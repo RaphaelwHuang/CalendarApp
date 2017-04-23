@@ -9,7 +9,6 @@
       <th>Name</th>
       <th>Start time</th>
       <th>End time</th>
-      <th> Week Day</th>
       <th> Group Event </th>
       <th colspan="3"></th>
     </tr>
@@ -19,15 +18,20 @@
     <% @events.each do |event| %>
       <% if check_user(event) || check_group(event) %>
       <tr>
-        <td><%= event.name %></td>
-        <td><%= event.starting_time %></td>
-        <td><%= event.ending_time %></td>
-        <td></td>
+        <td>  <Strong><%= event.name %>  </Strong></td>
+        <td>
+          <Strong><%= event.starting_time.strftime("%a, %B %d ") %></Strong><br>
+          <%= event.starting_time.strftime("%I:%M%p") %>
+        </td>
+        <td>
+            <Strong><%= event.ending_time.strftime("%a, %B %d ") %></Strong><br>
+          <%= event.ending_time.strftime("%I:%M%p") %>
+        </td>
+
         <td>  <% if event.group_id >0 %>
           ✓  <%=Group.find_by_id(event.group_id).name%>
           <%end%></td>
         <td>
-
 
           <%= link_to 'Show', event %>
           <%= link_to 'Edit', edit_event_path(event) %>

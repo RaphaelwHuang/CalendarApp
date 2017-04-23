@@ -128,11 +128,13 @@ a.button-sm {
 /* For calendar */
 
 .bg {
+  text-align: center;
   background-color: darkturquoise;
   color: #ffffff;
 }
 
 .bg-2 {
+  text-align: center;
   background-color: mediumpurple;
   color: #ffffff;
 }
@@ -188,7 +190,8 @@ a.button-sm {
 }
 
 .event{
-  margin: 8px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 
 }
 

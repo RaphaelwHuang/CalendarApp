@@ -7,8 +7,7 @@ Authored by: JA
 <% @group.users.each do |user| %>
     <% user.events.each do |event| %>
 
-
-          <%#  iterate through all the weeks to see where the event falls  %>
+          <%# Check to see if event lands on this date%>
             <% if date.strftime("%m/%d/%Y") == event.starting_time.strftime("%m/%d/%Y")%>
 
                   <%#  If it's only a user event %>
@@ -17,7 +16,10 @@ Authored by: JA
                       <Strong><%= event.name+ " " %><br></Strong>
                       <%= event.starting_time.strftime("%I:%M%p ").to_s %>
                       -
-                      <%= event.ending_time.strftime( "%I:%M%p").to_s %><br>
+                      <%= event.ending_time.strftime( "%I:%M%p").to_s %><%if date.strftime("%m/%d/%Y").to_s != event.ending_time.strftime("%m/%d/%Y").to_s%>
+                          <br><small>Event starts today.<br> Ends on: <%= event.ending_time.strftime("%a, %B %d ") %></small>
+                        </div>
+                        <%end%>
                       <%if event.group_id > 0%>
                       <div class = " bg-3">
                         GROUP EVENT
@@ -28,6 +30,31 @@ Authored by: JA
                             <br><%=User.find_by_id(event.user_id).fname%>
                           </div>
 
+                      <%else%>
+                          <div class = "bg">
+                            YOUR EVENT
+                          </div>
+                      <%end%>
+                    </div>
+                    <%elsif date.strftime("%m/%d/%Y").to_s == event.ending_time.strftime("%m/%d/%Y").to_s %>
+                    <div class = "event">
+                    <div class = "displayEvent ">
+                      <Strong><%= event.name+ " " %><br></Strong>
+                      <%= event.starting_time.strftime("%I:%M%p ").to_s %>
+                      -
+                      <%= event.ending_time.strftime( "%I:%M%p").to_s %><br><small>Event started on: <%= event.starting_time.strftime("%a, %B %d ") %><br> Ends today. </small>
+                        </div>
+
+
+                      <%if event.group_id > 0%>
+                      <div class = " bg-3">
+                        GROUP EVENT
+                      </div>
+                      <%elsif event.user_id != current_user.id %>
+                          <div class = "bg-2">
+                            Event made by:
+                            <br><%=User.find_by_id(event.user_id).fname%>
+                          </div>
 
                       <%else%>
                           <div class = "bg">
@@ -35,11 +62,10 @@ Authored by: JA
                           </div>
                       <%end%>
                     </div>
-                  </div>
 
-              <% end %>  <%# End the check the whether end_day is equal
+
+              <% end %>
 
           <% end %> <%# End the loop week days %>
 <% end %>
     <% end %> <%# End the loop events %>
-<% end %> <%# End the loop users %>

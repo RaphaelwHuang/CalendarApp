@@ -8,23 +8,14 @@
 
 <p>
   <strong>Start time:</strong>
-  <%= @event.starting_time.strftime("%H:%M").to_s  %>
+  <%= @event.starting_time.strftime("%B %d %H:%M").  %>
 </p>
 
 <p>
   <strong>End time:</strong>
-  <%= @event.ending_time.strftime("%H:%M").to_s  %>
+  <%= @event.ending_time.strftime("%B %d %H:%M").to_s  %>
 </p>
 
-<p>
-  <strong>Start day:</strong>
-  <%=  %>
-</p>
-
-<p>
-  <strong>End day:</strong>
-  <%= %>
-</p>
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %> |
