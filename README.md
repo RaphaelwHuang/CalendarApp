@@ -12,9 +12,6 @@ easier.
 ### Program Execution
 First, using the cd command to the file: calendar_app. Then you need to install the ruby gem by using "bundle install". The third step is to migrate the database by using rake, do "bundle exec rake db:migrate". You will see a message that said "=> Rails 4.2.8 application starting in development on http://localhost:3000". Open any web browser and enter http://localhost:3000. You will see our web app, the Hang Time! You can use Ctrl-C to shutdown server.
 
-### Test Plan
-The final project is biggest project we have worked on so far. The size of code posts a great challenge on testing. Most of the testing we did is system test. We will go to our web site and test every feature to make sure everything runs as expected. To test our website, you should first sign up. Then, you can create as many new events as you want. You can see the events on calendar on the home page. If you wish to see the events as a list, click view event to go to event page. You can destory some random events to test the destory feature or update some events. To test the group feature, creating a group by clicking the create group button. You can add new group meetings and see them on your calendar. You can create additional users and add them to your group. You can promote those users or remove them.
-
 ### Roles
 * Overall Project Manager: Jenn Alarcon
 * Coding Manager: Sunny Patel & Kenton Steiner
@@ -89,10 +86,8 @@ The final project is biggest project we have worked on so far. The size of code 
 * Create function that check if there is time conflict among user's events.
 
 
-##### Testing
-Testing was done without unit tests. Because we had so few pages, the basic test
-was to go to each page and make sure it was working as intended. The calendars were
-tested by creating various events and seeing if it worked as expected
+### Test Plan
+The final project is biggest project we have worked on so far. The size of code posts a great challenge on testing. Most of the testing we did is system test. We will go to our web site and test every feature to make sure everything runs as expected. To test our website, you should first sign up. Then, you can create as many new events as you want. You can see the events on calendar on the home page. If you wish to see the events as a list, click view event to go to event page. You can destory some random events to test the destory feature or update some events. To test the group feature, creating a group by clicking the create group button. You can add new group meetings and see them on your calendar. You can create additional users and add them to your group. You can promote those users or remove them.
 
-##### Bugs
+### Bugs
 We couldn't get the calendar to display from 0:00-24:00 and to show each events organized. I (SP) believe this would've been easier to do if we started over and instead started with a calendar that was empty, and had users fill in the calendar that way. However, we decided to stick with this version because of time constraints.
