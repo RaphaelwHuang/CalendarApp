@@ -1,51 +1,60 @@
 <div class='container'>
 	<div class='jumbotron center'>
-		<h2><%= user.fname + '\'s Profile' %></h2>
-      <% if user.nickname? %>
-         <i>"<%= user.nickname %>"</i>
-      <% end %>
+		<h1><%= user.fname + '\'s Profile' %></h1>
 	</div>
-   </div>
-<div class='container'>
-	<div>
-		<div>
-		<% if user.avatar? %>
-      		<%= image_tag user.avatar.url(:medium) %>
-   		<% end %>
-   		<br><br>
-   		
-   		</div>
-   		<div><strong>Name: </strong><%= user.fname + ' ' + user.lname %></div>
-   		<% if user.bio? %>
-   		<div><strong>About <%= user.fname %>:</strong><br><%= user.bio %></div>
-   		<% end %>
-   		<% if user.hometown? %>
-   		<div><strong>Hometown: </strong><%= user.hometown %></div>
-   		<% end %>
-   		<% if user.school? %>
-   		<div><strong>School: </strong><%= user.school %></div>
-   		<% end %>
-   		<% if user.major? %>
-   		<div><strong>Major: </strong><%= user.major %></div>
-   		<% end %>
-   		<% if user.grade? %>
-   		<div><strong>Grade: </strong><%= user.grade %></div>
-   		<% end %>
-   		<% if user.job? %>
-   		<div><strong>Job: </strong><%= user.job %></div>
-   		<% end %>
-   	</div>
-      <br><br>
-   	<span>
-      <% if user.id == current_user.id %>
-   	<%= link_to "Edit Profile", edit_user_registration_path, :method => :patch, class: "button"%>
-      <% end %>
-   	</span>
-      <%= link_to 'Back', :back, class: "button" %>
-
 </div>
-
-
-
-
-
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-9">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-12 lead"><%= user.fname + ' ' + user.lname %><hr></div>
+          </div>
+          <div class="row">
+         <div class="col-md-4 text-center">
+               <% if user.avatar? %>
+              <%= image_tag user.avatar.url(:medium) %>
+              <% else %>
+               <span>No Image Uploaded</span>
+               <% end %>
+            </div>
+            <div class="col-md-8">
+              <div class="row">
+                <div class="col-md-12">
+                  <h1 class="only-bottom-margin"><i><%= user.nickname %></i></h1>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 text-center">
+                  <span class="text-muted">Email:</span> <%= user.email %><br>
+                  <span class="text-muted">Hometown:</span><%= user.hometown %><br>
+                  <span class="text-muted">Job:</span><%= user.job %><br>
+                  <span class="text-muted">School:</span><%= user.school %><br>
+                  <span class="text-muted">Major:</span><%= user.major %><br>
+                  <span class="text-muted">Bio:</span>
+                  <%= user.bio %><br><br>
+                  <small class="text-muted">Created:<%= user.created_at %></small>
+                 
+                </div>
+                
+              </div>
+            </div>
+            
+          </div>
+          <div class="row">
+            <div class="col-md-12" style="text-align:right;">
+              <hr><span>
+      <% if user.id == current_user.id %>
+      <%= link_to "Edit Profile", edit_user_registration_path, :method => :patch, class: "button"%>
+      <% end %>
+      </span>
+      <%= link_to 'Back', :back, class: "button" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
