@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170422224653) do
+ActiveRecord::Schema.define(version: 20170423000723) do
 
   create_table "administrates", force: :cascade do |t|
     t.integer  "group_id"
@@ -49,10 +49,12 @@ ActiveRecord::Schema.define(version: 20170422224653) do
     t.time     "end_time"
     t.string   "start_day"
     t.string   "end_day"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.integer  "user_id"
     t.integer  "group_id"
+    t.datetime "starting_time"
+    t.datetime "ending_time"
   end
 
   add_index "events", ["group_id"], name: "index_events_on_group_id"
