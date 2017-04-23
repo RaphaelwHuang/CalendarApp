@@ -59,3 +59,11 @@ easier.
 * Implemented all things related to the event controller
 * Realized the function that all group members' events can be added to group calendar
 * Realized the function that all group meetings can be added to personal calendar
+
+##### Tony Su (@TS)
+* Create Static page help
+* Styling Static page help
+* Create function to check if the first name entered by user is valid
+* Create function that only allow logged in user to access the web pages.
+* Create function that check if there is time conflict among user's events.
+* Homepage styling
