@@ -46,6 +46,7 @@ easier.
 * Added view profile page, configured routes
 * Added stying for forms
 * Added bio attribute to groups, reconfigured controller and views to accomodate these changes
+* Fixed styling for profile
 
 
 
